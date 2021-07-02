@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_TEST_COMMON_HPP
-#define MARSHALLING_TEST_COMMON_HPP
+#ifndef NETWORK_MARSHALLING_TEST_COMMON_HPP
+#define NETWORK_MARSHALLING_TEST_COMMON_HPP
 
 #include <boost/test/unit_test.hpp>
 
@@ -34,8 +34,8 @@
 #include <type_traits>
 #include <vector>
 
-#include <nil/marshalling/message.hpp>
-#include <nil/marshalling/message_base.hpp>
+#include <nil/network/marshalling/message.hpp>
+#include <nil/network/marshalling/message_base.hpp>
 
 #include <nil/marshalling/types/bitmask_value.hpp>
 #include <nil/marshalling/types/bundle.hpp>
@@ -630,4 +630,4 @@ void common_read_write_msg_direct_test(TProtStack &stack, typename TProtStack::a
     BOOST_CHECK(std::equal(buf, buf + actualBufSize, static_cast<const char *>(&outCheckBuf[0])));
 }
 
-#endif    // MARSHALLING_TEST_COMMON_HPP
+#endif    // NETWORK_MARSHALLING_TEST_COMMON_HPP

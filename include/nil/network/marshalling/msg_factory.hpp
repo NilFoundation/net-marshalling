@@ -26,8 +26,8 @@
 /// @file
 /// Contains definition of nil::marshalling::msg_factory class.
 
-#ifndef MARSHALLING_MESSAGE_FACTORY_HPP
-#define MARSHALLING_MESSAGE_FACTORY_HPP
+#ifndef NETWORK_MARSHALLING_MESSAGE_FACTORY_HPP
+#define NETWORK_MARSHALLING_MESSAGE_FACTORY_HPP
 
 #include <type_traits>
 #include <algorithm>
@@ -36,8 +36,8 @@
 #include <nil/marshalling/processing/tuple.hpp>
 #include <nil/marshalling/processing/alloc.hpp>
 
-#include <nil/marshalling/detail/msg_factory/options_parser.hpp>
-#include <nil/marshalling/detail/msg_factory/selector.hpp>
+#include <nil/network/marshalling/detail/msg_factory/options_parser.hpp>
+#include <nil/network/marshalling/detail/msg_factory/selector.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -164,4 +164,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MESSAGE_FACTORY_HPP
+#endif    // NETWORK_MARSHALLING_MESSAGE_FACTORY_HPP

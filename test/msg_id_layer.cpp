@@ -34,8 +34,8 @@
 
 #include <nil/marshalling/types/enum_value.hpp>
 
-#include <nil/marshalling/protocol/msg_data_layer.hpp>
-#include <nil/marshalling/protocol/msg_id_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_data_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_id_layer.hpp>
 
 struct common_traits {
     typedef message_type msg_id_type;

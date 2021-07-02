@@ -32,9 +32,9 @@
 #include <cstdint>
 #include <iterator>
 #include <nil/marshalling/types/enum_value.hpp>
-#include <nil/marshalling/protocol/msg_size_layer.hpp>
-#include <nil/marshalling/protocol/msg_id_layer.hpp>
-#include <nil/marshalling/protocol/msg_data_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_size_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_id_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_data_layer.hpp>
 #include <nil/marshalling/generic_message.hpp>
 
 typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, nil::marshalling::option::id_info_interface,

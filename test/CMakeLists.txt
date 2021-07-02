@@ -14,7 +14,8 @@ if(NOT Boost_UNIT_TEST_FRAMEWORK_FOUND)
 endif()
 
 cm_test_link_libraries(${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME}
-                       ${Boost_LIBRARIES})
+                       ${Boost_LIBRARIES}
+                       nil::marshalling)
 
 macro(define_marshalling_test name)
     cm_test(NAME marshalling_${name}_test SOURCES ${name}.cpp)

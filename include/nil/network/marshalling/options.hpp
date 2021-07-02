@@ -26,8 +26,8 @@
 /// @file
 /// Contains definition of all the options used by the @b Marshalling library
 
-#ifndef MARSHALLING_OPTIONS_HPP
-#define MARSHALLING_OPTIONS_HPP
+#ifndef NETWORK_MARSHALLING_OPTIONS_HPP
+#define NETWORK_MARSHALLING_OPTIONS_HPP
 
 #include <tuple>
 #include <type_traits>
@@ -1350,4 +1350,4 @@ namespace nil {
         }    // namespace option
     }        // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_OPTIONS_HPP
+#endif    // NETWORK_MARSHALLING_OPTIONS_HPP

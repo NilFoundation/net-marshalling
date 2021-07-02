@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_BASE_DETECTION_HPP
-#define MARSHALLING_BASE_DETECTION_HPP
+#ifndef NETWORK_MARSHALLING_BASE_DETECTION_HPP
+#define NETWORK_MARSHALLING_BASE_DETECTION_HPP
 
 #if __cplusplus < 201402L
 
@@ -39,4 +39,4 @@
 #endif    // #if !defined(MARSHALLING_MUST_DEFINE_BASE) && defined(__GNUC__)
 
 #endif    // #if __cplusplus < 201402L
-#endif    // MARSHALLING_BASE_DETECTION_HPP
+#endif    // NETWORK_MARSHALLING_BASE_DETECTION_HPP

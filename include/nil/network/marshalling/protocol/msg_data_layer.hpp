@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MSG_DATA_LAYER_HPP
-#define MARSHALLING_MSG_DATA_LAYER_HPP
+#ifndef NETWORK_MARSHALLING_MSG_DATA_LAYER_HPP
+#define NETWORK_MARSHALLING_MSG_DATA_LAYER_HPP
 
 #include <tuple>
 #include <iterator>
@@ -38,9 +38,9 @@
 #include <nil/marshalling/processing/tuple.hpp>
 #include <nil/marshalling/types/array_list.hpp>
 #include <nil/marshalling/types/int_value.hpp>
-#include <nil/marshalling/message.hpp>
-#include <nil/marshalling/message_base.hpp>
-#include <nil/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/message.hpp>
+#include <nil/network/marshalling/message_base.hpp>
+#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -52,7 +52,7 @@ namespace nil {
             /// @tparam TExtraOpts Extra options to inner @ref field_type type which is defined
             ///     to be @ref nil::marshalling::types::array_list. This field is used only in @ref
             ///     all_fields_type type and @ref read_fields_cached() member function.
-            /// @headerfile nil/marshalling/protocol/MsgDataLayer.h
+            /// @headerfile nil/network/marshalling/protocol/MsgDataLayer.h
             template<typename... TExtraOpts>
             class msg_data_layer {
             public:
@@ -624,4 +624,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_DATA_LAYER_HPP
+#endif    // NETWORK_MARSHALLING_MSG_DATA_LAYER_HPP

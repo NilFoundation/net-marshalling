@@ -26,8 +26,8 @@
 /// @file marshalling/generic_handler.h
 /// This file contains definition of common handler.
 
-#ifndef MARSHALLING_GENERIC_HANDLER_HPP
-#define MARSHALLING_GENERIC_HANDLER_HPP
+#ifndef NETWORK_MARSHALLING_GENERIC_HANDLER_HPP
+#define NETWORK_MARSHALLING_GENERIC_HANDLER_HPP
 
 #include <tuple>
 #include <type_traits>
@@ -695,4 +695,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_GENERIC_HANDLER_HPP
+#endif    // NETWORK_MARSHALLING_GENERIC_HANDLER_HPP

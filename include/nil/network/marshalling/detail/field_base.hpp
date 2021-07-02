@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_FIELD_BASE_HPP
-#define MARSHALLING_FIELD_BASE_HPP
+#ifndef NETWORK_MARSHALLING_FIELD_BASE_HPP
+#define NETWORK_MARSHALLING_FIELD_BASE_HPP
 
 #include <nil/marshalling/endianness.hpp>
 #include <nil/marshalling/options.hpp>
@@ -67,4 +67,4 @@ namespace nil {
         }    // namespace detail
     }        // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_FIELD_BASE_HPP
+#endif    // NETWORK_MARSHALLING_FIELD_BASE_HPP

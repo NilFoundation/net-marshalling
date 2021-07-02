@@ -26,10 +26,10 @@
 /// @file
 /// Provides common base class for the custom messages with default implementation.
 
-#ifndef MARSHALLING_MESSAGE_BASE_HPP
-#define MARSHALLING_MESSAGE_BASE_HPP
+#ifndef NETWORK_MARSHALLING_MESSAGE_BASE_HPP
+#define NETWORK_MARSHALLING_MESSAGE_BASE_HPP
 
-#include <nil/marshalling/detail/message/implementation_builder.hpp>
+#include <nil/network/marshalling/detail/message/implementation_builder.hpp>
 #include <nil/marshalling/detail/macro_common.hpp>
 #include <nil/marshalling/detail/fields_access.hpp>
 
@@ -89,7 +89,7 @@ namespace nil {
         ///         nil::marshalling::option::StaticNumIdImpl option wasn't used. Must be paired with
         ///         nil::marshalling::option::msg_type.
         /// @extends message
-        /// @headerfile nil/marshalling/message_base.h
+        /// @headerfile nil/network/marshalling/message_base.h
         /// @see @ref to_message_base()
         template<typename TMessage, typename... TOptions>
         class message_base : public detail::message::impl_builder_type<TMessage, TOptions...> {
@@ -948,4 +948,4 @@ namespace nil {
     }                                                                                 \
     MARSHALLING_EXPAND(MARSHALLING_DO_FIELD_ACC_FUNC(all_fields_type, fields(), __VA_ARGS__))
 
-#endif    // MARSHALLING_MESSAGE_BASE_HPP
+#endif    // NETWORK_MARSHALLING_MESSAGE_BASE_HPP

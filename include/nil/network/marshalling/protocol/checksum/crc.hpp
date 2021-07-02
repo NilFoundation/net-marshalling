@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_CRC_HPP
-#define MARSHALLING_CRC_HPP
+#ifndef NETWORK_MARSHALLING_CRC_HPP
+#define NETWORK_MARSHALLING_CRC_HPP
 
 #include <cstdint>
 #include <array>
@@ -205,7 +205,7 @@ namespace nil {
                 /// @tparam TFin Final XOR value
                 /// @tparam TReflect Perform reflection of every byte
                 /// @tparam TReflectRem Perform reflection of the final value
-                /// @headerfile nil/marshalling/protocol/checksum/Crc.h
+                /// @headerfile nil/network/marshalling/protocol/checksum/Crc.h
                 /// @see Crc_CCITT
                 /// @see Crc_16
                 /// @see Crc_32
@@ -325,4 +325,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_CRC_HPP
+#endif    // NETWORK_MARSHALLING_CRC_HPP

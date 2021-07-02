@@ -23,13 +23,13 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MSG_FACTORY_SELECTOR_HPP
-#define MARSHALLING_MSG_FACTORY_SELECTOR_HPP
+#ifndef NETWORK_MARSHALLING_MSG_FACTORY_SELECTOR_HPP
+#define NETWORK_MARSHALLING_MSG_FACTORY_SELECTOR_HPP
 
 #include <type_traits>
-#include <nil/marshalling/detail/msg_factory/direct.hpp>
-#include <nil/marshalling/detail/msg_factory/uniq.hpp>
-#include <nil/marshalling/detail/msg_factory/generic.hpp>
+#include <nil/network/marshalling/detail/msg_factory/direct.hpp>
+#include <nil/network/marshalling/detail/msg_factory/uniq.hpp>
+#include <nil/network/marshalling/detail/msg_factory/generic.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -79,4 +79,4 @@ namespace nil {
         }        // namespace detail
     }            // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_FACTORY_SELECTOR_HPP
+#endif    // NETWORK_MARSHALLING_MSG_FACTORY_SELECTOR_HPP

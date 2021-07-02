@@ -27,8 +27,8 @@
 /// This file contains all the classes necessary to properly
 /// define message traits.
 
-#ifndef MARSHALLING_TRAITS_HPP
-#define MARSHALLING_TRAITS_HPP
+#ifndef NETWORK_MARSHALLING_TRAITS_HPP
+#define NETWORK_MARSHALLING_TRAITS_HPP
 
 #include <ratio>
 
@@ -115,4 +115,4 @@ namespace nil {
     }            // namespace marshalling
 }    // namespace nil
 
-#endif    // MARSHALLING_TRAITS_HPP
+#endif    // NETWORK_MARSHALLING_TRAITS_HPP

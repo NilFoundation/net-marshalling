@@ -23,12 +23,12 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MSG_FACTORY_BIN_SEARCH_BASE_HPP
-#define MARSHALLING_MSG_FACTORY_BIN_SEARCH_BASE_HPP
+#ifndef NETWORK_MARSHALLING_MSG_FACTORY_BIN_SEARCH_BASE_HPP
+#define NETWORK_MARSHALLING_MSG_FACTORY_BIN_SEARCH_BASE_HPP
 
 #include <nil/detail/type_traits.hpp>
 
-#include <nil/marshalling/detail/msg_factory/base.hpp>
+#include <nil/network/marshalling/detail/msg_factory/base.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -215,4 +215,4 @@ namespace nil {
         }        // namespace detail
     }            // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_FACTORY_BIN_SEARCH_BASE_HPP
+#endif    // NETWORK_MARSHALLING_MSG_FACTORY_BIN_SEARCH_BASE_HPP

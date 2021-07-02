@@ -26,8 +26,8 @@
 /// @file
 /// Contains definition of @ref nil::marshalling::empty_handler class
 
-#ifndef MARSHALLING_EMPTY_HANDLER_HPP
-#define MARSHALLING_EMPTY_HANDLER_HPP
+#ifndef NETWORK_MARSHALLING_EMPTY_HANDLER_HPP
+#define NETWORK_MARSHALLING_EMPTY_HANDLER_HPP
 
 namespace nil {
     namespace marshalling {
@@ -44,4 +44,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_EMPTY_HANDLER_HPP
+#endif    // NETWORK_MARSHALLING_EMPTY_HANDLER_HPP

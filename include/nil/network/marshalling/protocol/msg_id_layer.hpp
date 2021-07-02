@@ -23,11 +23,11 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-/// @file nil/marshalling/protocol/msg_id_layer.hpp
+/// @file nil/network/marshalling/protocol/msg_id_layer.hpp
 /// This file contains "Message ID" protocol layer of the "marshalling" module.
 
-#ifndef MARSHALLING_MSG_ID_LAYER_HPP
-#define MARSHALLING_MSG_ID_LAYER_HPP
+#ifndef NETWORK_MARSHALLING_MSG_ID_LAYER_HPP
+#define NETWORK_MARSHALLING_MSG_ID_LAYER_HPP
 
 #include <array>
 #include <tuple>
@@ -40,7 +40,7 @@
 
 #include <nil/marshalling/assert_type.hpp>
 #include <nil/marshalling/processing/tuple.hpp>
-#include <nil/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
 #include <nil/marshalling/msg_factory.hpp>
 #include <nil/marshalling/types/no_value.hpp>
 #include <nil/marshalling/type_traits.hpp>
@@ -61,7 +61,7 @@ namespace nil {
             /// @tparam TNextLayer Next transport layer type.
             /// @tparam TOptions All the options that will be forwarded to definition of
             ///     message factory type (nil::marshalling::msg_factory).
-            /// @headerfile nil/marshalling/protocol/MsgIdLayer.h
+            /// @headerfile nil/network/marshalling/protocol/MsgIdLayer.h
             template<typename TField, typename TMessage, typename TAllMessages, typename TNextLayer,
                      typename... TOptions>
             class msg_id_layer
@@ -436,4 +436,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_ID_LAYER_HPP
+#endif    // NETWORK_MARSHALLING_MSG_ID_LAYER_HPP

@@ -26,14 +26,14 @@
 /// @file
 /// Provides implementation of @ref nil::marshalling::generic_message class
 
-#ifndef MARSHALLING_GENERIC_MESSAGE_HPP
-#define MARSHALLING_GENERIC_MESSAGE_HPP
+#ifndef NETWORK_MARSHALLING_GENERIC_MESSAGE_HPP
+#define NETWORK_MARSHALLING_GENERIC_MESSAGE_HPP
 
 #include <tuple>
 #include <cstdint>
 
 #include <nil/marshalling/options.hpp>
-#include <nil/marshalling/message_base.hpp>
+#include <nil/network/marshalling/message_base.hpp>
 
 #include <nil/marshalling/types/array_list.hpp>
 
@@ -147,4 +147,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_GENERIC_MESSAGE_HPP
+#endif    // NETWORK_MARSHALLING_GENERIC_MESSAGE_HPP

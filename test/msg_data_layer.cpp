@@ -34,7 +34,7 @@
 #include <iterator>
 #include <memory>
 
-#include <nil/marshalling/protocol/msg_data_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_data_layer.hpp>
 
 typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, nil::marshalling::option::big_endian,
                    nil::marshalling::option::read_iterator<const char *>,

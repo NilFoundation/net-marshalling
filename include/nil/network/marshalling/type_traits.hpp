@@ -22,8 +22,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_TYPE_TRAITS_HPP
-#define MARSHALLING_TYPE_TRAITS_HPP
+#ifndef NETWORK_MARSHALLING_TYPE_TRAITS_HPP
+#define NETWORK_MARSHALLING_TYPE_TRAITS_HPP
 
 #include <boost/tti/tti.hpp>
 #include <boost/mpl/placeholders.hpp>
@@ -57,4 +57,4 @@ namespace nil {
     }        // namespace marshalling
 }    // namespace nil
 
-#endif    // MARSHALLING_TYPE_TRAITS_HPP
+#endif    // NETWORK_MARSHALLING_TYPE_TRAITS_HPP

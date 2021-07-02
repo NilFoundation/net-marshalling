@@ -26,8 +26,8 @@
 /// @file
 /// This file contains all the functions required for proper units conversion.
 
-#ifndef MARSHALLING_UNITS_HPP
-#define MARSHALLING_UNITS_HPP
+#ifndef NETWORK_MARSHALLING_UNITS_HPP
+#define NETWORK_MARSHALLING_UNITS_HPP
 
 #include <ratio>
 #include <type_traits>
@@ -1543,4 +1543,4 @@ namespace nil {
         }    // namespace units
     }        // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_UNITS_HPP
+#endif    // NETWORK_MARSHALLING_UNITS_HPP

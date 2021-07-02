@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MSG_FACTORY_BASE_HPP
-#define MARSHALLING_MSG_FACTORY_BASE_HPP
+#ifndef NETWORK_MARSHALLING_MSG_FACTORY_BASE_HPP
+#define NETWORK_MARSHALLING_MSG_FACTORY_BASE_HPP
 
 #include <type_traits>
 #include <memory>
@@ -215,4 +215,4 @@ namespace nil {
         }        // namespace detail
     }            // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_FACTORY_BASE_HPP
+#endif    // NETWORK_MARSHALLING_MSG_FACTORY_BASE_HPP

@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MACRO_COMMON_HPP
-#define MARSHALLING_MACRO_COMMON_HPP
+#ifndef NETWORK_MARSHALLING_MACRO_COMMON_HPP
+#define NETWORK_MARSHALLING_MACRO_COMMON_HPP
 
 #define MARSHALLING_EXPAND(x_) x_
 #define MARSHALLING_CONCATENATE_(x_, y_) x_##y_
@@ -52,4 +52,4 @@
 #define FUNC_ARGS_AUTO_REF_RETURN(name_, args_, ret_) decltype(auto) name_(args_)
 #define FUNC_ARGS_AUTO_REF_RETURN_CONST(name_, args_, ret_) decltype(auto) name_(args_) const
 #endif    // #if __cplusplus < 201402L
-#endif    // MARSHALLING_MACRO_COMMON_HPP
+#endif    // NETWORK_MARSHALLING_MACRO_COMMON_HPP

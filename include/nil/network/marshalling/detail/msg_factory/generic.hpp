@@ -23,10 +23,10 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MSG_FACTORY_GENERIC_HPP
-#define MARSHALLING_MSG_FACTORY_GENERIC_HPP
+#ifndef NETWORK_MARSHALLING_MSG_FACTORY_GENERIC_HPP
+#define NETWORK_MARSHALLING_MSG_FACTORY_GENERIC_HPP
 
-#include <nil/marshalling/detail/msg_factory/bin_search_base.hpp>
+#include <nil/network/marshalling/detail/msg_factory/bin_search_base.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -98,4 +98,4 @@ namespace nil {
         }        // namespace detail
     }            // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_FACTORY_GENERIC_HPP
+#endif    // NETWORK_MARSHALLING_MSG_FACTORY_GENERIC_HPP

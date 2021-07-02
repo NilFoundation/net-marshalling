@@ -36,14 +36,14 @@
 
 #include <nil/marshalling/types/enum_value.hpp>
 
-#include <nil/marshalling/protocol/checksum_layer.hpp>
-#include <nil/marshalling/protocol/msg_size_layer.hpp>
-#include <nil/marshalling/protocol/msg_id_layer.hpp>
-#include <nil/marshalling/protocol/sync_prefix_layer.hpp>
-#include <nil/marshalling/protocol/checksum/basic_sum.hpp>
-#include <nil/marshalling/protocol/checksum/crc.hpp>
-#include <nil/marshalling/protocol/msg_data_layer.hpp>
-#include <nil/marshalling/protocol/checksum_prefix_layer.hpp>
+#include <nil/network/marshalling/protocol/checksum_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_size_layer.hpp>
+#include <nil/network/marshalling/protocol/msg_id_layer.hpp>
+#include <nil/network/marshalling/protocol/sync_prefix_layer.hpp>
+#include <nil/network/marshalling/protocol/checksum/basic_sum.hpp>
+#include <nil/network/marshalling/protocol/checksum/crc.hpp>
+#include <nil/network/marshalling/protocol/msg_data_layer.hpp>
+#include <nil/network/marshalling/protocol/checksum_prefix_layer.hpp>
 
 typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, nil::marshalling::option::id_info_interface,
                    nil::marshalling::option::big_endian, nil::marshalling::option::read_iterator<const char *>,

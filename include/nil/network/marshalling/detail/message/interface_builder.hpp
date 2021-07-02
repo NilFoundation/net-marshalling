@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MESSAGE_INTERFACE_BUILDER_HPP
-#define MARSHALLING_MESSAGE_INTERFACE_BUILDER_HPP
+#ifndef NETWORK_MARSHALLING_MESSAGE_INTERFACE_BUILDER_HPP
+#define NETWORK_MARSHALLING_MESSAGE_INTERFACE_BUILDER_HPP
 
 #include <type_traits>
 #include <cstddef>
@@ -35,7 +35,7 @@
 #include <nil/marshalling/processing/access.hpp>
 #include <nil/marshalling/processing/tuple.hpp>
 #include <nil/marshalling/status_type.hpp>
-#include <nil/marshalling/detail/message/interface_options_parser.hpp>
+#include <nil/network/marshalling/detail/message/interface_options_parser.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -665,4 +665,4 @@ namespace nil {
         }        // namespace detail
     }            // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MESSAGE_INTERFACE_BUILDER_HPP
+#endif    // NETWORK_MARSHALLING_MESSAGE_INTERFACE_BUILDER_HPP

@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_MSG_FACTORY_OPTIONS_PARSER_HPP
-#define MARSHALLING_MSG_FACTORY_OPTIONS_PARSER_HPP
+#ifndef NETWORK_MARSHALLING_MSG_FACTORY_OPTIONS_PARSER_HPP
+#define NETWORK_MARSHALLING_MSG_FACTORY_OPTIONS_PARSER_HPP
 
 #include <nil/marshalling/options.hpp>
 
@@ -72,4 +72,4 @@ namespace nil {
         }        // namespace detail
     }            // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_MSG_FACTORY_OPTIONS_PARSER_HPP
+#endif    // NETWORK_MARSHALLING_MSG_FACTORY_OPTIONS_PARSER_HPP

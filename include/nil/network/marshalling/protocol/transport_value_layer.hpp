@@ -23,11 +23,11 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_TRANSPORT_VALUE_LAYER_HPP
-#define MARSHALLING_TRANSPORT_VALUE_LAYER_HPP
+#ifndef NETWORK_MARSHALLING_TRANSPORT_VALUE_LAYER_HPP
+#define NETWORK_MARSHALLING_TRANSPORT_VALUE_LAYER_HPP
 
-#include <nil/marshalling/protocol/protocol_layer_base.hpp>
-#include <nil/marshalling/protocol/detail/transport_value_layer_adapter.hpp>
+#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/protocol/detail/transport_value_layer_adapter.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -53,7 +53,7 @@ namespace nil {
             /// @tparam TOptions Extending functionality options. Supported options are:
             ///     @li @ref nil::marshalling::option::PseudoValue - Mark the handled value to be "pseudo"
             ///         one, i.e. the field is not getting serialized.
-            /// @headerfile nil/marshalling/protocol/TransportValueLayer.h
+            /// @headerfile nil/network/marshalling/protocol/TransportValueLayer.h
             /// @extends ProtocolLayerBase
             template<typename TField, std::size_t TIdx, typename TNextLayer, typename... TOptions>
             class transport_value_layer
@@ -332,4 +332,4 @@ namespace nil {
         }    // namespace protocol
     }        // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_TRANSPORT_VALUE_LAYER_HPP
+#endif    // NETWORK_MARSHALLING_TRANSPORT_VALUE_LAYER_HPP

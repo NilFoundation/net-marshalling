@@ -27,8 +27,8 @@
 /// Contains definition of message object interface and various base classes
 /// for custom messages.
 
-#ifndef MARSHALLING_MESSAGE_HPP
-#define MARSHALLING_MESSAGE_HPP
+#ifndef NETWORK_MARSHALLING_MESSAGE_HPP
+#define NETWORK_MARSHALLING_MESSAGE_HPP
 
 #include <cstdint>
 #include <memory>
@@ -38,7 +38,7 @@
 #include <nil/marshalling/assert_type.hpp>
 #include <nil/marshalling/field_type.hpp>
 
-#include <nil/marshalling/detail/message/interface_builder.hpp>
+#include <nil/network/marshalling/detail/message/interface_builder.hpp>
 #include <nil/marshalling/detail/transport_fields_access.hpp>
 
 namespace nil {
@@ -87,7 +87,7 @@ namespace nil {
         ///         the message being serialized / deserialized and/or handled.
         ///     @li @ref nil::marshalling::option::version_in_extra_transport_fields - Provide index of
         ///         the version field in extra transport fields.
-        ///     @headerfile nil/marshalling/message.h
+        ///     @headerfile nil/network/marshalling/message.h
         template<typename... TOptions>
         class message : public detail::message::interface_builder_type<TOptions...> {
             using base_impl_type = detail::message::interface_builder_type<TOptions...>;
@@ -665,4 +665,4 @@ namespace nil {
     }                                                                                                \
     MARSHALLING_EXPAND(MARSHALLING_DO_TRANSPORT_FIELD_ACC_FUNC(transport_fields_type, transport_fields(), __VA_ARGS__))
 
-#endif    // MARSHALLING_MESSAGE_HPP
+#endif    // NETWORK_MARSHALLING_MESSAGE_HPP

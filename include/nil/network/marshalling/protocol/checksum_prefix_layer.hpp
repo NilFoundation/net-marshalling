@@ -23,14 +23,14 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_CHECKSUM_PREFIX_LAYER_HPP
-#define MARSHALLING_CHECKSUM_PREFIX_LAYER_HPP
+#ifndef NETWORK_MARSHALLING_CHECKSUM_PREFIX_LAYER_HPP
+#define NETWORK_MARSHALLING_CHECKSUM_PREFIX_LAYER_HPP
 
 #include <iterator>
 #include <type_traits>
 #include <nil/marshalling/types/int_value.hpp>
-#include <nil/marshalling/protocol/protocol_layer_base.hpp>
-#include <nil/marshalling/protocol/detail/checksum_layer_options_parser.hpp>
+#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/protocol/detail/checksum_layer_options_parser.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -62,7 +62,7 @@ namespace nil {
             ///         checksum value. Usage of @ref nil::marshalling::option::ChecksumLayerVerifyBeforeRead
             ///         modifies the default behaviour by forcing the checksum verification
             ///         prior to invocation of @b read operation in the wrapped layer(s).
-            /// @headerfile nil/marshalling/protocol/ChecksumPrefixLayer.h
+            /// @headerfile nil/network/marshalling/protocol/ChecksumPrefixLayer.h
             template<typename TField, typename TCalc, typename TNextLayer, typename... TOptions>
             class checksum_prefix_layer
                 : public protocol_layer_base<TField, TNextLayer,
@@ -370,4 +370,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_CHECKSUM_PREFIX_LAYER_HPP
+#endif    // NETWORK_MARSHALLING_CHECKSUM_PREFIX_LAYER_HPP

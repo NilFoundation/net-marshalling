@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_GEN_ENUM_HPP
-#define MARSHALLING_GEN_ENUM_HPP
+#ifndef NETWORK_MARSHALLING_GEN_ENUM_HPP
+#define NETWORK_MARSHALLING_GEN_ENUM_HPP
 
 #include <nil/marshalling/detail/macro_common.hpp>
 
@@ -139,4 +139,4 @@
         MARSHALLING_EXPAND(MARSHALLING_DO_ENUM(MARSHALLING_CONCATENATE(p_, _), __VA_ARGS__)), \
         MARSHALLING_END_ENUM(p_)                                                              \
     };
-#endif    // MARSHALLING_GEN_ENUM_HPP
+#endif    // NETWORK_MARSHALLING_GEN_ENUM_HPP

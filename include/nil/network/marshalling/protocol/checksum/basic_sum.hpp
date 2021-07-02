@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_BASIC_SUM_HPP
-#define MARSHALLING_BASIC_SUM_HPP
+#ifndef NETWORK_MARSHALLING_BASIC_SUM_HPP
+#define NETWORK_MARSHALLING_BASIC_SUM_HPP
 
 #include <cstdint>
 
@@ -39,7 +39,7 @@ namespace nil {
                 /// @details The checksum calculator class that sums all the bytes and
                 ///     returns the result as a checksum value.
                 /// @tparam TResult Type of the checksum result value.
-                /// @headerfile nil/marshalling/protocol/checksum/BasicSum.h
+                /// @headerfile nil/network/marshalling/protocol/checksum/BasicSum.h
                 template<typename TResult = std::uint8_t>
                 class basic_sum {
                 public:
@@ -67,4 +67,4 @@ namespace nil {
 
     }    // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_BASIC_SUM_HPP
+#endif    // NETWORK_MARSHALLING_BASIC_SUM_HPP

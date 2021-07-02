@@ -23,10 +23,10 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_SYNC_PREFIX_LAYER_HPP
-#define MARSHALLING_SYNC_PREFIX_LAYER_HPP
+#ifndef NETWORK_MARSHALLING_SYNC_PREFIX_LAYER_HPP
+#define NETWORK_MARSHALLING_SYNC_PREFIX_LAYER_HPP
 
-#include <nil/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -42,7 +42,7 @@ namespace nil {
             ///     field type definition must use options (nil::marshalling::option::DefaultNumValue)
             ///     to specify its default value to be equal to the expected "sync" value.
             /// @tparam TNextLayer Next transport layer in protocol stack.
-            /// @headerfile nil/marshalling/protocol/SyncPrefixLayer.h
+            /// @headerfile nil/network/marshalling/protocol/SyncPrefixLayer.h
             template<typename TField, typename TNextLayer>
             class sync_prefix_layer
                 : public protocol_layer_base<TField, TNextLayer, sync_prefix_layer<TField, TNextLayer>> {
@@ -166,4 +166,4 @@ namespace nil {
         }    // namespace protocol
     }        // namespace marshalling
 }    // namespace nil
-#endif    // MARSHALLING_SYNC_PREFIX_LAYER_HPP
+#endif    // NETWORK_MARSHALLING_SYNC_PREFIX_LAYER_HPP

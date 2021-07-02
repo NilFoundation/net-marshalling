@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_PROTOCOL_LAYER_BASE_HPP
-#define MARSHALLING_PROTOCOL_LAYER_BASE_HPP
+#ifndef NETWORK_MARSHALLING_PROTOCOL_LAYER_BASE_HPP
+#define NETWORK_MARSHALLING_PROTOCOL_LAYER_BASE_HPP
 
 #include <tuple>
 #include <utility>
@@ -38,7 +38,7 @@
 #include <nil/marshalling/assert_type.hpp>
 #include <nil/marshalling/options.hpp>
 
-#include <nil/marshalling/protocol/detail/protocol_layer_base_options_parser.hpp>
+#include <nil/network/marshalling/protocol/detail/protocol_layer_base_options_parser.hpp>
 #include <nil/marshalling/detail/protocol_layers_access.hpp>
 
 namespace nil {
@@ -135,7 +135,7 @@ namespace nil {
             /// @tparam TOptions Extra options. Supported ones are:
             ///     @li @ref nil::marshalling::option::ProtocolLayerForceReadUntilDataSplit
             ///     @li @ref nil::marshalling::option::ProtocolLayerDisallowReadUntilDataSplit
-            /// @headerfile nil/marshalling/protocol/ProtocolLayerBase.h
+            /// @headerfile nil/network/marshalling/protocol/ProtocolLayerBase.h
             template<typename TField, typename TNextLayer, typename TDerived, typename... TOptions>
             class protocol_layer_base {
             public:
@@ -1006,4 +1006,4 @@ namespace nil {
 /// @related nil::marshalling::protocol::ProtocolLayerBase
 #define MARSHALLING_PROTOCOL_LAYERS_ACCESS_OUTER(...) \
     MARSHALLING_PROTOCOL_LAYERS_ACCESS(MARSHALLING_EXPAND(MARSHALLING_REVERSE_MACRO_ARGS(__VA_ARGS__)))
-#endif    // MARSHALLING_PROTOCOL_LAYER_BASE_HPP
+#endif    // NETWORK_MARSHALLING_PROTOCOL_LAYER_BASE_HPP

@@ -23,8 +23,8 @@
 // SOFTWARE.
 //---------------------------------------------------------------------------//
 
-#ifndef MARSHALLING_VARIANT_ACCESS_HPP
-#define MARSHALLING_VARIANT_ACCESS_HPP
+#ifndef NETWORK_MARSHALLING_VARIANT_ACCESS_HPP
+#define NETWORK_MARSHALLING_VARIANT_ACCESS_HPP
 
 #include <tuple>
 #include <type_traits>
@@ -392,4 +392,4 @@
 #define MARSHALLING_DO_VARIANT_MEM_ACC_FUNC_NOTEMPLATE(...) \
     MARSHALLING_EXPAND(                                     \
         MARSHALLING_CHOOSE_VARIANT_MEM_ACC_FUNC_NOTEMPLATE(MARSHALLING_NUM_ARGS(__VA_ARGS__), __VA_ARGS__))
-#endif    // MARSHALLING_VARIANT_ACCESS_HPP
+#endif    // NETWORK_MARSHALLING_VARIANT_ACCESS_HPP
