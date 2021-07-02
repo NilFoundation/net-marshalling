@@ -30,8 +30,8 @@
 #define NETWORK_MARSHALLING_MESSAGE_BASE_HPP
 
 #include <nil/network/marshalling/detail/message/implementation_builder.hpp>
-#include <nil/marshalling/detail/macro_common.hpp>
-#include <nil/marshalling/detail/fields_access.hpp>
+#include <nil/network/marshalling/detail/macro_common.hpp>
+#include <nil/network/marshalling/detail/fields_access.hpp>
 
 namespace nil {
     namespace marshalling {

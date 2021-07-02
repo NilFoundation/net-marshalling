@@ -30,6 +30,7 @@
 #include <type_traits>
 #include <nil/marshalling/types/int_value.hpp>
 #include <nil/marshalling/type_traits.hpp>
+
 #include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
 
 namespace nil {

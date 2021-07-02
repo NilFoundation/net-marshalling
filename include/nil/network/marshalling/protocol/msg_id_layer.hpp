@@ -40,10 +40,11 @@
 
 #include <nil/marshalling/assert_type.hpp>
 #include <nil/marshalling/processing/tuple.hpp>
-#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
-#include <nil/marshalling/msg_factory.hpp>
 #include <nil/marshalling/types/no_value.hpp>
 #include <nil/marshalling/type_traits.hpp>
+
+#include <nil/network/marshalling/msg_factory.hpp>
+#include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
 
 namespace nil {
     namespace marshalling {

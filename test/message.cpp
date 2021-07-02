@@ -31,9 +31,9 @@
 #include <cstdint>
 #include <iterator>
 #include <memory>
-#include <nil/marshalling/empty_handler.hpp>
-#include <nil/marshalling/generic_handler.hpp>
-#include <nil/marshalling/generic_message.hpp>
+#include <nil/network/marshalling/empty_handler.hpp>
+#include <nil/network/marshalling/generic_handler.hpp>
+#include <nil/network/marshalling/generic_message.hpp>
 #include <nil/marshalling/status_type.hpp>
 
 template<typename TMessage>

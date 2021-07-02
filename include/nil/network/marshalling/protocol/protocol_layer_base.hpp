@@ -39,7 +39,7 @@
 #include <nil/marshalling/options.hpp>
 
 #include <nil/network/marshalling/protocol/detail/protocol_layer_base_options_parser.hpp>
-#include <nil/marshalling/detail/protocol_layers_access.hpp>
+#include <nil/network/marshalling/detail/protocol_layers_access.hpp>
 
 namespace nil {
     namespace marshalling {

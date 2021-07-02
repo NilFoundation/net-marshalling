@@ -82,18 +82,14 @@ list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS
      include/nil/network/marshalling/protocol/protocol_layer_base.hpp
      include/nil/network/marshalling/protocol/sync_prefix_layer.hpp
      include/nil/network/marshalling/protocol/transport_value_layer.hpp
-     include/nil/network/marshalling/assert_type.hpp
      include/nil/network/marshalling/compile_control.hpp
      include/nil/network/marshalling/empty_handler.hpp
-     include/nil/network/marshalling/field_cast.hpp
-     include/nil/network/marshalling/field_type.hpp
      include/nil/network/marshalling/generic_handler.hpp
      include/nil/network/marshalling/generic_message.hpp
      include/nil/network/marshalling/message.hpp
      include/nil/network/marshalling/message_base.hpp
      include/nil/network/marshalling/msg_factory.hpp
      include/nil/network/marshalling/options.hpp
-     include/nil/network/marshalling/status_type.hpp
      include/nil/network/marshalling/units.hpp
      include/nil/network/marshalling/version.hpp)
 
