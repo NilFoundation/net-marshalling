@@ -10,6 +10,7 @@ list(APPEND CMAKE_MODULE_PATH
      "${CMAKE_CURRENT_LIST_DIR}/cmake/modules/share/modules/cmake")
 
 include(CMConfig)
+include(CMDeploy)
 include(CMSetupVersion)
 
 if(NOT CMAKE_WORKSPACE_NAME OR NOT ("${CMAKE_WORKSPACE_NAME}" STREQUAL "network"))
@@ -44,58 +45,57 @@ if((UNIX) AND (NOT CC_NO_CCACHE))
 endif()
 
 list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS
-     include/nil/marshalling/detail/message/implementation_builder.hpp
-     include/nil/marshalling/detail/message/implementation_options_parser.hpp
-     include/nil/marshalling/detail/message/interface_builder.hpp
-     include/nil/marshalling/detail/message/interface_options_parser.hpp
-     include/nil/marshalling/detail/msg_factory/base.hpp
-     include/nil/marshalling/detail/msg_factory/bin_search_base.hpp
-     include/nil/marshalling/detail/msg_factory/direct.hpp
-     include/nil/marshalling/detail/msg_factory/generic.hpp
-     include/nil/marshalling/detail/msg_factory/options_parser.hpp
-     include/nil/marshalling/detail/msg_factory/selector.hpp
-     include/nil/marshalling/detail/msg_factory/uniq.hpp
-     include/nil/marshalling/detail/base_detection.hpp
-     include/nil/marshalling/detail/bits_access.hpp
-     include/nil/marshalling/detail/detect.hpp
-     include/nil/marshalling/detail/field_base.hpp
-     include/nil/marshalling/detail/fields_access.hpp
-     include/nil/marshalling/detail/gen_enum.hpp
-     include/nil/marshalling/detail/macro_common.hpp
-     include/nil/marshalling/detail/protocol_layers_access.hpp
-     include/nil/marshalling/detail/reverse_macro_args.hpp
-     include/nil/marshalling/detail/transport_fields_access.hpp
-     include/nil/marshalling/detail/type_traits.hpp
-     include/nil/marshalling/detail/variant_access.hpp
-     include/nil/marshalling/protocol/checksum/basic_sum.hpp
-     include/nil/marshalling/protocol/checksum/crc.hpp
-     include/nil/marshalling/protocol/detail/checksum_layer_options_parser.hpp
-     include/nil/marshalling/protocol/detail/protocol_layer_base_options_parser.hpp
-     include/nil/marshalling/protocol/detail/transport_value_layer_adapter.hpp
-     include/nil/marshalling/protocol/detail/transport_value_layer_options_parser.hpp
-     include/nil/marshalling/protocol/checksum_layer.hpp
-     include/nil/marshalling/protocol/checksum_prefix_layer.hpp
-     include/nil/marshalling/protocol/msg_data_layer.hpp
-     include/nil/marshalling/protocol/msg_id_layer.hpp
-     include/nil/marshalling/protocol/msg_size_layer.hpp
-     include/nil/marshalling/protocol/protocol_layer_base.hpp
-     include/nil/marshalling/protocol/sync_prefix_layer.hpp
-     include/nil/marshalling/protocol/transport_value_layer.hpp
-     include/nil/marshalling/assert_type.hpp
-     include/nil/marshalling/compile_control.hpp
-     include/nil/marshalling/empty_handler.hpp
-     include/nil/marshalling/field_cast.hpp
-     include/nil/marshalling/field_type.hpp
-     include/nil/marshalling/generic_handler.hpp
-     include/nil/marshalling/generic_message.hpp
-     include/nil/marshalling/marshalling_state.hpp
-     include/nil/marshalling/message.hpp
-     include/nil/marshalling/message_base.hpp
-     include/nil/marshalling/msg_factory.hpp
-     include/nil/marshalling/options.hpp
-     include/nil/marshalling/status_type.hpp
-     include/nil/marshalling/units.hpp
-     include/nil/marshalling/version.hpp)
+     include/nil/network/marshalling/detail/message/implementation_builder.hpp
+     include/nil/network/marshalling/detail/message/implementation_options_parser.hpp
+     include/nil/network/marshalling/detail/message/interface_builder.hpp
+     include/nil/network/marshalling/detail/message/interface_options_parser.hpp
+     include/nil/network/marshalling/detail/msg_factory/base.hpp
+     include/nil/network/marshalling/detail/msg_factory/bin_search_base.hpp
+     include/nil/network/marshalling/detail/msg_factory/direct.hpp
+     include/nil/network/marshalling/detail/msg_factory/generic.hpp
+     include/nil/network/marshalling/detail/msg_factory/options_parser.hpp
+     include/nil/network/marshalling/detail/msg_factory/selector.hpp
+     include/nil/network/marshalling/detail/msg_factory/uniq.hpp
+     include/nil/network/marshalling/detail/base_detection.hpp
+     include/nil/network/marshalling/detail/bits_access.hpp
+     include/nil/network/marshalling/detail/detect.hpp
+     include/nil/network/marshalling/detail/field_base.hpp
+     include/nil/network/marshalling/detail/fields_access.hpp
+     include/nil/network/marshalling/detail/gen_enum.hpp
+     include/nil/network/marshalling/detail/macro_common.hpp
+     include/nil/network/marshalling/detail/protocol_layers_access.hpp
+     include/nil/network/marshalling/detail/reverse_macro_args.hpp
+     include/nil/network/marshalling/detail/transport_fields_access.hpp
+     include/nil/network/marshalling/detail/type_traits.hpp
+     include/nil/network/marshalling/detail/variant_access.hpp
+     include/nil/network/marshalling/protocol/checksum/basic_sum.hpp
+     include/nil/network/marshalling/protocol/checksum/crc.hpp
+     include/nil/network/marshalling/protocol/detail/checksum_layer_options_parser.hpp
+     include/nil/network/marshalling/protocol/detail/protocol_layer_base_options_parser.hpp
+     include/nil/network/marshalling/protocol/detail/transport_value_layer_adapter.hpp
+     include/nil/network/marshalling/protocol/detail/transport_value_layer_options_parser.hpp
+     include/nil/network/marshalling/protocol/checksum_layer.hpp
+     include/nil/network/marshalling/protocol/checksum_prefix_layer.hpp
+     include/nil/network/marshalling/protocol/msg_data_layer.hpp
+     include/nil/network/marshalling/protocol/msg_id_layer.hpp
+     include/nil/network/marshalling/protocol/msg_size_layer.hpp
+     include/nil/network/marshalling/protocol/protocol_layer_base.hpp
+     include/nil/network/marshalling/protocol/sync_prefix_layer.hpp
+     include/nil/network/marshalling/protocol/transport_value_layer.hpp
+     include/nil/network/marshalling/assert_type.hpp
+     include/nil/network/marshalling/compile_control.hpp
+     include/nil/network/marshalling/empty_handler.hpp
+     include/nil/network/marshalling/field_cast.hpp
+     include/nil/network/marshalling/field_type.hpp
+     include/nil/network/marshalling/generic_handler.hpp
+     include/nil/network/marshalling/generic_message.hpp
+     include/nil/network/marshalling/message.hpp
+     include/nil/network/marshalling/message_base.hpp
+     include/nil/network/marshalling/msg_factory.hpp
+     include/nil/network/marshalling/options.hpp
+     include/nil/network/marshalling/status_type.hpp
+     include/nil/network/marshalling/units.hpp
+     include/nil/network/marshalling/version.hpp)
 
 list(APPEND ${CURRENT_PROJECT_NAME}_UNGROUPED_SOURCES)
 
@@ -121,6 +121,9 @@ target_link_libraries(${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME} INTERFACE
 cm_deploy(TARGETS ${CMAKE_WORKSPACE_NAME}_${CURRENT_PROJECT_NAME}
           INCLUDE include
           NAMESPACE ${CMAKE_WORKSPACE_NAME}::)
+
+add_subdirectories("${CMAKE_CURRENT_LIST_DIR}/libs"
+                   SUBMODULE_DEFINITION_HEADER "cm_project\\(")
 
 if(BUILD_TESTS)
     add_subdirectory(test)
