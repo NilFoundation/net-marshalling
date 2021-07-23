@@ -37,10 +37,10 @@
 #include <nil/marshalling/status_type.hpp>
 
 template<typename TMessage>
-TMessage internal_read_write_test(typename TMessage::read_iterator const buf,
-                                  std::size_t bufSize,
-                                  nil::marshalling::status_type expected_status
-                                  = nil::marshalling::status_type::success) {
+TMessage
+    internal_read_write_test(typename TMessage::read_iterator const buf,
+                             std::size_t bufSize,
+                             nil::marshalling::status_type expected_status = nil::marshalling::status_type::success) {
     TMessage msg;
 
     typename TMessage::read_iterator readIter = buf;
@@ -68,8 +68,7 @@ template<typename TMessage>
 void internal_write_read_test(TMessage &msg,
                               typename TMessage::write_iterator const buf,
                               std::size_t bufSize,
-                              nil::marshalling::status_type expected_status
-                              = nil::marshalling::status_type::success) {
+                              nil::marshalling::status_type expected_status = nil::marshalling::status_type::success) {
     typename TMessage::write_iterator writeIter = buf;
     nil::marshalling::status_type es = msg.write(writeIter, bufSize);
     BOOST_CHECK(es == expected_status);
@@ -85,20 +84,18 @@ void internal_write_read_test(TMessage &msg,
     }
 }
 
-typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, 
+typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>,
                    nil::marshalling::option::id_info_interface,
                    nil::marshalling::option::read_iterator<const std::uint8_t *>,
                    nil::marshalling::option::write_iterator<std::uint8_t *>,
-                   nil::marshalling::option::valid_check_interface, 
+                   nil::marshalling::option::valid_check_interface,
                    nil::marshalling::option::length_info_interface,
                    nil::marshalling::option::handler<nil::marshalling::empty_handler>,
                    nil::marshalling::option::name_interface>
     common_options;
 
-typedef nil::marshalling::message<nil::marshalling::option::big_endian, 
-                                  common_options> BeMessageBase;
-typedef nil::marshalling::message<nil::marshalling::option::little_endian, 
-                                  common_options> LeMessageBase;
+typedef nil::marshalling::message<nil::marshalling::option::big_endian, common_options> BeMessageBase;
+typedef nil::marshalling::message<nil::marshalling::option::little_endian, common_options> LeMessageBase;
 
 static_assert(std::has_virtual_destructor<BeMessageBase>::value,
               "BeMessageBase is expected to have virtual destructor");
@@ -120,8 +117,7 @@ static_assert(!BeMessageBase::has_version_in_transport_fields(), "Wrong interfac
 
 typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>> BasicCommonOptions;
 
-typedef nil::marshalling::message<nil::marshalling::option::big_endian, 
-                                  BasicCommonOptions> BeBasicMessageBase;
+typedef nil::marshalling::message<nil::marshalling::option::big_endian, BasicCommonOptions> BeBasicMessageBase;
 
 static_assert(!std::has_virtual_destructor<BeBasicMessageBase>::value,
               "BeBasicMessageBase is expected to NOT have virtual destructor");
@@ -142,8 +138,7 @@ typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>,
                    nil::marshalling::option::read_iterator<const std::uint8_t *>>
     ReadOnlyCommonOptions;
 
-typedef nil::marshalling::message<nil::marshalling::option::big_endian, 
-                                  ReadOnlyCommonOptions> BeReadOnlyMessageBase;
+typedef nil::marshalling::message<nil::marshalling::option::big_endian, ReadOnlyCommonOptions> BeReadOnlyMessageBase;
 
 static_assert(std::has_virtual_destructor<BeReadOnlyMessageBase>::value,
               "BeReadOnlyMessageBase is expected to have virtual destructor");
@@ -152,8 +147,7 @@ typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>,
                    nil::marshalling::option::write_iterator<std::back_insert_iterator<std::vector<std::uint8_t>>>>
     WriteOnlyCommonOptions;
 
-typedef nil::marshalling::message<nil::marshalling::option::big_endian, 
-                                  WriteOnlyCommonOptions> BeWriteOnlyMessageBase;
+typedef nil::marshalling::message<nil::marshalling::option::big_endian, WriteOnlyCommonOptions> BeWriteOnlyMessageBase;
 
 static_assert(BeWriteOnlyMessageBase::has_msg_id_type(), "Wrong interface");
 static_assert(BeWriteOnlyMessageBase::has_endian(), "Wrong interface");
@@ -170,12 +164,10 @@ static_assert(!BeWriteOnlyMessageBase::has_version_in_transport_fields(), "Wrong
 static_assert(std::has_virtual_destructor<BeWriteOnlyMessageBase>::value,
               "BeWriteOnlyMessageBase is expected to have virtual destructor");
 
-typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, 
-                   nil::marshalling::option::length_info_interface>
+typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, nil::marshalling::option::length_info_interface>
     LengthOnlyCommonOptions;
 
-typedef nil::marshalling::message<nil::marshalling::option::big_endian, 
-                                  LengthOnlyCommonOptions>
+typedef nil::marshalling::message<nil::marshalling::option::big_endian, LengthOnlyCommonOptions>
     BeLengthOnlyMessageBase;
 
 static_assert(BeLengthOnlyMessageBase::has_msg_id_type(), "Wrong interface");
@@ -203,10 +195,9 @@ typedef Message1<BeLengthOnlyMessageBase> BeLengthOnlyMsg1;
 typedef Message3<BeMessageBase> BeMsg3;
 typedef Message3<LeMessageBase> LeMsg3;
 
-typedef nil::marshalling::message<common_options, 
-                                  nil::marshalling::option::big_endian,
-                                  nil::marshalling::option::refresh_interface>
-    BeRefreshableMessageBase;
+typedef nil::marshalling::
+    message<common_options, nil::marshalling::option::big_endian, nil::marshalling::option::refresh_interface>
+        BeRefreshableMessageBase;
 
 static_assert(BeRefreshableMessageBase::has_msg_id_type(), "Wrong interface");
 static_assert(BeRefreshableMessageBase::has_endian(), "Wrong interface");
@@ -268,7 +259,7 @@ class BoolHandler;
 
 typedef nil::marshalling::message<nil::marshalling::option::msg_id_type<message_type>,
                                   nil::marshalling::option::handler<BoolHandler>,
-                                  nil::marshalling::option::id_info_interface, 
+                                  nil::marshalling::option::id_info_interface,
                                   nil::marshalling::option::big_endian>
     BoolHandlerMsgBase;
 
@@ -278,12 +269,8 @@ typedef Message3<BoolHandlerMsgBase> BoolHandlerMsg3;
 
 typedef std::tuple<BoolHandlerMsg1, BoolHandlerMsg2, BoolHandlerMsg3> BoolHandlerAllMessages;
 
-class BoolHandler : public nil::marshalling::generic_handler<BoolHandlerMsgBase, 
-                                                             BoolHandlerAllMessages, 
-                                                             bool> {
-    using Base = nil::marshalling::generic_handler<BoolHandlerMsgBase, 
-                                                   BoolHandlerAllMessages, 
-                                                   bool>;
+class BoolHandler : public nil::marshalling::generic_handler<BoolHandlerMsgBase, BoolHandlerAllMessages, bool> {
+    using Base = nil::marshalling::generic_handler<BoolHandlerMsgBase, BoolHandlerAllMessages, bool>;
 
 public:
     using Base::handle;
@@ -315,7 +302,7 @@ static_assert(!BoolHandlerMsgBase::has_version_in_transport_fields(), "Wrong int
 
 typedef std::tuple<
     nil::marshalling::types::int_value<nil::marshalling::field_type<nil::marshalling::option::big_endian>,
-                                       std::uint16_t, 
+                                       std::uint16_t,
                                        nil::marshalling::option::default_num_value<5>>>
     ExtraVersionTransport;
 
@@ -392,9 +379,7 @@ BOOST_AUTO_TEST_CASE(test2) {
     static const std::size_t BeBufSize = std::extent<decltype(beBuf)>::value;
     internal_write_read_test(beMsg, &beBuf[0], BeBufSize);
     BOOST_CHECK(
-        std::equal(&ExpectecedBeBuf[0], 
-                   &ExpectecedBeBuf[0] + BeBufSize, 
-                   static_cast<const std::uint8_t *>(&beBuf[0])));
+        std::equal(&ExpectecedBeBuf[0], &ExpectecedBeBuf[0] + BeBufSize, static_cast<const std::uint8_t *>(&beBuf[0])));
 
     static const std::uint8_t ExpectecedLeBuf[] = {0x02, 0x01};
 
@@ -405,9 +390,7 @@ BOOST_AUTO_TEST_CASE(test2) {
     static const std::size_t LeBufSize = std::extent<decltype(leBuf)>::value;
     internal_write_read_test(leMsg, leBuf, LeBufSize);
     BOOST_CHECK(
-        std::equal(&ExpectecedLeBuf[0], 
-                   &ExpectecedLeBuf[0] + LeBufSize, 
-                   static_cast<const std::uint8_t *>(&leBuf[0])));
+        std::equal(&ExpectecedLeBuf[0], &ExpectecedLeBuf[0] + LeBufSize, static_cast<const std::uint8_t *>(&leBuf[0])));
 }
 
 BOOST_AUTO_TEST_CASE(test3) {
@@ -415,13 +398,9 @@ BOOST_AUTO_TEST_CASE(test3) {
 
     static const std::size_t BufSize = std::extent<decltype(Buf)>::value;
 
-    BeMsg1 beMsg = internal_read_write_test<BeMsg1>(Buf, 
-                                                  BufSize, 
-                                                  nil::marshalling::status_type::not_enough_data);
+    BeMsg1 beMsg = internal_read_write_test<BeMsg1>(Buf, BufSize, nil::marshalling::status_type::not_enough_data);
 
-    LeMsg1 leMsg = internal_read_write_test<LeMsg1>(Buf, 
-                                                  BufSize, 
-                                                  nil::marshalling::status_type::not_enough_data);
+    LeMsg1 leMsg = internal_read_write_test<LeMsg1>(Buf, BufSize, nil::marshalling::status_type::not_enough_data);
 }
 
 BOOST_AUTO_TEST_CASE(test4) {
@@ -431,23 +410,15 @@ BOOST_AUTO_TEST_CASE(test4) {
 
     BeMsg1 beMsg;
     std::get<0>(beMsg.fields()).value() = 0x0102;
-    internal_write_read_test(beMsg, 
-                             buf, 
-                             BufSize, 
-                             nil::marshalling::status_type::buffer_overflow);
+    internal_write_read_test(beMsg, buf, BufSize, nil::marshalling::status_type::buffer_overflow);
 
     LeMsg1 leMsg;
     std::get<0>(leMsg.fields()).value() = 0x0102;
-    internal_write_read_test(leMsg, 
-                             buf, 
-                             BufSize, 
-                             nil::marshalling::status_type::buffer_overflow);
+    internal_write_read_test(leMsg, buf, BufSize, nil::marshalling::status_type::buffer_overflow);
 }
 
 BOOST_AUTO_TEST_CASE(test5) {
-    static const std::uint8_t Buf[] = {0x01, 0x02, 0x3, 0x4, 
-                                       (std::uint8_t)-5, 0xde, 0xad, 0x00, 
-                                       0xaa, 0xff};
+    static const std::uint8_t Buf[] = {0x01, 0x02, 0x3, 0x4, (std::uint8_t)-5, 0xde, 0xad, 0x00, 0xaa, 0xff};
 
     static const std::size_t BufSize = std::extent<decltype(Buf)>::value;
 
@@ -482,16 +453,10 @@ BOOST_AUTO_TEST_CASE(test6) {
     static const std::size_t BufSize = std::extent<decltype(buf)>::value;
 
     BeMsg3 beMsg;
-    internal_write_read_test(beMsg, 
-                             buf, 
-                             BufSize, 
-                             nil::marshalling::status_type::buffer_overflow);
+    internal_write_read_test(beMsg, buf, BufSize, nil::marshalling::status_type::buffer_overflow);
 
     LeMsg3 leMsg;
-    internal_write_read_test(leMsg, 
-                             buf, 
-                             BufSize, 
-                             nil::marshalling::status_type::buffer_overflow);
+    internal_write_read_test(leMsg, buf, BufSize, nil::marshalling::status_type::buffer_overflow);
 }
 
 BOOST_AUTO_TEST_CASE(test7) {
@@ -583,11 +548,10 @@ BOOST_AUTO_TEST_CASE(test11) {
 
     static_assert(std::has_virtual_destructor<Msg2>::value, "Error");
 
-    typedef nil::marshalling::message<
-        nil::marshalling::option::big_endian, 
-        nil::marshalling::option::msg_id_type<message_type>,
-        nil::marshalling::option::read_iterator<const char *>, 
-        nil::marshalling::option::no_virtual_destructor>
+    typedef nil::marshalling::message<nil::marshalling::option::big_endian,
+                                      nil::marshalling::option::msg_id_type<message_type>,
+                                      nil::marshalling::option::read_iterator<const char *>,
+                                      nil::marshalling::option::no_virtual_destructor>
         Msg3;
 
     static_assert(!std::has_virtual_destructor<Msg3>::value, "Error");
@@ -599,11 +563,10 @@ BOOST_AUTO_TEST_CASE(test11) {
 
     static_assert(std::has_virtual_destructor<Msg4>::value, "Error");
 
-    typedef nil::marshalling::message<
-        nil::marshalling::option::big_endian, 
-        nil::marshalling::option::msg_id_type<message_type>,
-        nil::marshalling::option::write_iterator<char *>, 
-        nil::marshalling::option::no_virtual_destructor>
+    typedef nil::marshalling::message<nil::marshalling::option::big_endian,
+                                      nil::marshalling::option::msg_id_type<message_type>,
+                                      nil::marshalling::option::write_iterator<char *>,
+                                      nil::marshalling::option::no_virtual_destructor>
         Msg5;
 
     static_assert(!std::has_virtual_destructor<Msg5>::value, "Error");
@@ -615,11 +578,10 @@ BOOST_AUTO_TEST_CASE(test11) {
 
     static_assert(std::has_virtual_destructor<Msg6>::value, "Error");
 
-    typedef nil::marshalling::message<
-        nil::marshalling::option::big_endian, 
-        nil::marshalling::option::msg_id_type<message_type>,
-        nil::marshalling::option::id_info_interface, 
-        nil::marshalling::option::no_virtual_destructor>
+    typedef nil::marshalling::message<nil::marshalling::option::big_endian,
+                                      nil::marshalling::option::msg_id_type<message_type>,
+                                      nil::marshalling::option::id_info_interface,
+                                      nil::marshalling::option::no_virtual_destructor>
         Msg7;
 
     static_assert(!std::has_virtual_destructor<Msg7>::value, "Error");
@@ -631,11 +593,10 @@ BOOST_AUTO_TEST_CASE(test11) {
 
     static_assert(std::has_virtual_destructor<Msg8>::value, "Error");
 
-    typedef nil::marshalling::message<
-        nil::marshalling::option::big_endian, 
-        nil::marshalling::option::msg_id_type<message_type>,
-        nil::marshalling::option::valid_check_interface, 
-        nil::marshalling::option::no_virtual_destructor>
+    typedef nil::marshalling::message<nil::marshalling::option::big_endian,
+                                      nil::marshalling::option::msg_id_type<message_type>,
+                                      nil::marshalling::option::valid_check_interface,
+                                      nil::marshalling::option::no_virtual_destructor>
         Msg9;
 
     static_assert(!std::has_virtual_destructor<Msg9>::value, "Error");
@@ -647,11 +608,10 @@ BOOST_AUTO_TEST_CASE(test11) {
 
     static_assert(std::has_virtual_destructor<Msg10>::value, "Error");
 
-    typedef nil::marshalling::message<
-        nil::marshalling::option::big_endian, 
-        nil::marshalling::option::msg_id_type<message_type>,
-        nil::marshalling::option::length_info_interface, 
-        nil::marshalling::option::no_virtual_destructor>
+    typedef nil::marshalling::message<nil::marshalling::option::big_endian,
+                                      nil::marshalling::option::msg_id_type<message_type>,
+                                      nil::marshalling::option::length_info_interface,
+                                      nil::marshalling::option::no_virtual_destructor>
         Msg11;
 
     static_assert(!std::has_virtual_destructor<Msg11>::value, "Error");
@@ -663,11 +623,10 @@ BOOST_AUTO_TEST_CASE(test11) {
 
     static_assert(std::has_virtual_destructor<Msg12>::value, "Error");
 
-    typedef nil::marshalling::message<
-        nil::marshalling::option::big_endian, 
-        nil::marshalling::option::msg_id_type<message_type>,
-        nil::marshalling::option::refresh_interface, 
-        nil::marshalling::option::no_virtual_destructor>
+    typedef nil::marshalling::message<nil::marshalling::option::big_endian,
+                                      nil::marshalling::option::msg_id_type<message_type>,
+                                      nil::marshalling::option::refresh_interface,
+                                      nil::marshalling::option::no_virtual_destructor>
         Msg13;
 
     static_assert(!std::has_virtual_destructor<Msg13>::value, "Error");
@@ -685,8 +644,7 @@ BOOST_AUTO_TEST_CASE(test12) {
     static const std::uint8_t Buf[] = {0x12, 0x34, 0x56};
     static const std::size_t BufSize = std::extent<decltype(Buf)>::value;
 
-    typename BeMessageBase::read_iterator readIter = 
-      nil::marshalling::read_iterator_for<BeMessageBase>(Buf);
+    typename BeMessageBase::read_iterator readIter = nil::marshalling::read_iterator_for<BeMessageBase>(Buf);
 
     nil::marshalling::status_type es = interface.read(readIter, BufSize);
 
@@ -699,8 +657,7 @@ BOOST_AUTO_TEST_CASE(test12) {
 
     std::vector<std::uint8_t> outBuf;
     outBuf.resize(BufSize);
-    typename BeMessageBase::write_iterator writeIter = 
-      nil::marshalling::write_iterator_for<BeMessageBase>(&outBuf[0]);
+    typename BeMessageBase::write_iterator writeIter = nil::marshalling::write_iterator_for<BeMessageBase>(&outBuf[0]);
 
     es = interface.write(writeIter, outBuf.size());
     BOOST_CHECK(es == nil::marshalling::status_type::success);
@@ -777,8 +734,7 @@ BOOST_AUTO_TEST_CASE(test16) {
     BOOST_CHECK(msg.field_value2().field().value() == 0x5678);
 
     msg.version() = 4U;
-    typename Msg7::read_iterator readIter = 
-      nil::marshalling::read_iterator_for<Msg7>(&Buf[0]);
+    typename Msg7::read_iterator readIter = nil::marshalling::read_iterator_for<Msg7>(&Buf[0]);
 
     nil::marshalling::status_type es = msg.read(readIter, BufSize);
     BOOST_CHECK(es == nil::marshalling::status_type::success);
