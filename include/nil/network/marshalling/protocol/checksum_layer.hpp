@@ -28,7 +28,6 @@
 
 #include <iterator>
 #include <type_traits>
-#include <nil/marshalling/types/int_value.hpp>
 #include <nil/marshalling/type_traits.hpp>
 
 #include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
@@ -205,8 +204,8 @@ namespace nil {
                 }
 
             private:
-                static_assert(is_int_value<field_type>::value,
-                              "The checksum field is expected to be of int_value type");
+                static_assert(is_integral<field_type>::value,
+                              "The checksum field is expected to be of integral type");
 
                 static_assert(field_type::min_length() == field_type::max_length(),
                               "The checksum field is expected to be of fixed length");

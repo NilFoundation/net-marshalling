@@ -31,7 +31,8 @@
 #include <cstddef>
 #include <cstdint>
 #include <iterator>
-#include <nil/marshalling/types/enum_value.hpp>
+#include <nil/marshalling/types/enumeration.hpp>
+#include <nil/marshalling/types/integral.hpp>
 #include <nil/network/marshalling/protocol/msg_size_layer.hpp>
 #include <nil/network/marshalling/protocol/msg_id_layer.hpp>
 #include <nil/network/marshalling/protocol/msg_data_layer.hpp>
@@ -97,7 +98,7 @@ typedef Message1<BeNonPolymorphicMessageBase> NonPolymorphicBeMsg1;
 typedef Message2<BeNonPolymorphicMessageBase> NonPolymorphicBeMsg2;
 
 template<typename TField, std::size_t TSize, std::size_t TOffset = 0>
-using SizeField = nil::marshalling::types::int_value<TField, unsigned, nil::marshalling::option::fixed_length<TSize>,
+using SizeField = nil::marshalling::types::integral<TField, unsigned, nil::marshalling::option::fixed_length<TSize>,
                                                      nil::marshalling::option::num_value_ser_offset<TOffset>>;
 
 template<typename TField>
@@ -117,7 +118,7 @@ using BeSizeField22 = SizeField22<BeField>;
 using LeSizeField22 = SizeField22<LeField>;
 
 template<typename TField, std::size_t TLen>
-using IdField = nil::marshalling::types::enum_value<TField, message_type, nil::marshalling::option::fixed_length<TLen>>;
+using IdField = nil::marshalling::types::enumeration<TField, message_type, nil::marshalling::option::fixed_length<TLen>>;
 
 template<typename TField>
 using IdField1 = IdField<TField, 1>;

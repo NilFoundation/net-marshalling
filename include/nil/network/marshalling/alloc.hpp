@@ -37,9 +37,10 @@
 
 #include <nil/detail/type_traits.hpp>
 
-#include <nil/marshalling/processing/detail/alloc.hpp>
 #include <nil/marshalling/assert_type.hpp>
-#include <nil/marshalling/processing/types/tuple.hpp>
+#include <nil/marshalling/processing/tuple.hpp>
+
+#include <nil/network/marshalling/detail/alloc.hpp>
 
 namespace nil {
     namespace marshalling {

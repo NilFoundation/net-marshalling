@@ -76,8 +76,8 @@
 /// abstractions do not have polymorphic behaviour.
 ///
 /// The available fields abstractions are:
-/// @li @ref nil::marshalling::types::IntValue - used to define @ref sec_field_tutorial_int_value
-/// @li @ref nil::marshalling::types::EnumValue - used to define @ref sec_field_tutorial_enum_value
+/// @li @ref nil::marshalling::types::IntValue - used to define @ref sec_field_tutorial_integral
+/// @li @ref nil::marshalling::types::EnumValue - used to define @ref sec_field_tutorial_enumeration
 /// @li @ref nil::marshalling::types::BitmaskValue - used to define @ref sec_field_tutorial_bitmask_value
 /// @li @ref nil::marshalling::types::Bitfield - used to define @ref sec_field_tutorial_bitfield
 /// @li @ref nil::marshalling::types::Bundle - used to define @ref sec_field_tutorial_bundle
@@ -87,7 +87,7 @@
 /// @li @ref nil::marshalling::types::Optional - used to define @ref sec_field_tutorial_optional
 /// @li @ref nil::marshalling::types::Variant - used to define @ref sec_field_tutorial_variant
 ///
-/// @section sec_field_tutorial_int_value Integral value fields_type
+/// @section sec_field_tutorial_integral Integral value fields_type
 /// Integral values are abstracted by nil::marshalling::types::IntValue class, which
 /// receives at least two template parameters. The first one is a base
 /// class, from which the nil::marshalling::types::IntValue will inherit. It must be
@@ -112,7 +112,7 @@
 /// (because @b MyFieldBase base class was defined using nil::marshalling::option::big_endian
 /// option).
 /// 
-/// @subsection sec_field_tutorial_int_value_fixed_length Modifying Serialisation length
+/// @subsection sec_field_tutorial_integral_fixed_length Modifying Serialisation length
 /// Sometimes protocol specification tries to reduce amount of data transferred over
 /// I/O link. It may define serialization length of the field that differs
 /// from standard length of basic integral types, such as @b std::int8_t, @b std::uint8_t,
@@ -126,7 +126,7 @@
 /// using MyIntField = nil::marshalling::types::IntValue<MyFieldBase, std::uint32_t, nil::marshalling::option::fixed_length<3> >;
 /// @endcode
 ///
-/// @subsection sec_field_tutorial_int_value_var_length Variable Serialisation length
+/// @subsection sec_field_tutorial_integral_var_length Variable Serialisation length
 /// There are protocols, that try to reduce amount of traffic over I/O link by
 /// using variable length when serialising numeric value. Usually it is
 /// <a href="https://en.wikipedia.org/wiki/Variable-length_quantity">Base-128</a>
@@ -143,7 +143,7 @@
 /// The field's base class (@b MyFieldBase) contains endian information which is
 /// used to determine which part of the value is serialized first.
 ///
-/// @subsection sec_field_tutorial_int_value_ser_offset Serialisation Offset
+/// @subsection sec_field_tutorial_integral_ser_offset Serialisation Offset
 /// There are cases when there is a need to add/subtract some predefined offset
 /// to/from the value of the field when serialization takes place.
 /// Good example of such case would be serialising a "current year" value. 
@@ -184,7 +184,7 @@
 /// assert(outData[0] == 16); // The value equal to "year.value() - 2000" is expected to be written.  
 /// @endcode
 ///
-/// @subsection sec_field_tutorial_int_value_scaling Scaling value
+/// @subsection sec_field_tutorial_integral_scaling Scaling value
 /// Sometimes systems operate with floating point numbers. Let's say to handle
 /// the distance between two points on the map in meters. However, when communicating
 /// this information over the I/O link, the developers often scale the floating
@@ -252,8 +252,8 @@
 /// to the nil::marshalling::types::IntValue field. If such option wasn't used
 /// @b nil::marshalling::option::scaling_ratio<1, 1> is assumed.
 ///
-/// @subsection sec_field_tutorial_int_value_units value units
-/// In addition to @ref sec_field_tutorial_int_value_scaling, the @b Marshalling library
+/// @subsection sec_field_tutorial_integral_units value units
+/// In addition to @ref sec_field_tutorial_integral_scaling, the @b Marshalling library
 /// provides an ability to specify field's value units and perform conversion
 /// between units of the same type. Let's get back to the same example of defining
 /// distance between two point, but instead of providing scaling ratio directly,
@@ -379,12 +379,12 @@
 /// actual units of the field, the @b Marshalling library will do all the necessary math
 /// calculation to provide the requested value.
 ///
-/// @subsection sec_field_tutorial_int_value_other Other options_type
+/// @subsection sec_field_tutorial_integral_other Other options_type
 /// There multiple common options that are applicable to all the fields,
 /// nil::marshalling::types::IntValue included. Please refer to
 /// @ref sec_field_tutorial_common_options for more detail.
 ///
-/// @section sec_field_tutorial_enum_value Enum value fields_type
+/// @section sec_field_tutorial_enumeration Enum value fields_type
 /// Sometimes it is more convenient to operate with enum types instead of 
 /// integral values. For example, the custom protocol message carries information
 /// of how to configure some external serial port, and one of the values is
@@ -437,8 +437,8 @@
 /// compiler.
 ///
 /// The nil::marshalling::types::EnumValue field supports almost all the options that
-/// can be used with nil::marshalling::types::IntValue: @ref sec_field_tutorial_int_value_fixed_length,
-/// @ref sec_field_tutorial_int_value_var_length, @ref sec_field_tutorial_int_value_ser_offset,
+/// can be used with nil::marshalling::types::IntValue: @ref sec_field_tutorial_integral_fixed_length,
+/// @ref sec_field_tutorial_integral_var_length, @ref sec_field_tutorial_integral_ser_offset,
 /// as well as @ref sec_field_tutorial_common_options.
 ///
 /// @section sec_field_tutorial_bitmask_value Bitmask value fields_type
@@ -453,7 +453,7 @@
 /// @b unsigned, which makes the default serialization length to be
 /// @b sizeof(unsigned). The modification of the underlying storage type as
 /// well as serialization length can be done using nil::marshalling::option::fixed_length
-/// option (see @ref sec_field_tutorial_int_value_fixed_length). The underlying
+/// option (see @ref sec_field_tutorial_integral_fixed_length). The underlying
 /// type will always be some unsigned integral type. If the serialization length
 /// is specified to be 1 byte, the underlying storage type is @b std::uint8_t, 
 /// if the serialization length is 2 bytes, the underlying storage type is @b std::uint16_t,
@@ -660,7 +660,7 @@
 /// @section sec_field_tutorial_bitfield Bitfield fields_type
 /// Many communication protocols try to pack multiple independent values into
 /// a one or several bytes to save traffic on I/O link. For example, to encode
-/// baud rate from example in @ref sec_field_tutorial_enum_value section, only 
+/// baud rate from example in @ref sec_field_tutorial_enumeration section, only 
 /// 3 bits are needed (values [0 - 6]). The serial port configuration may
 /// also require parity information, which may have only "None", "Even", and "Odd"
 /// values:
@@ -1500,11 +1500,11 @@
 ///
 /// @section sec_field_tutorial_fp_value Floating Point value fields_type
 /// Floating point value fields (nil::marshalling::types::FloatValue) are very similar to
-/// @ref sec_field_tutorial_int_value, but use @b float or @b double as its 
+/// @ref sec_field_tutorial_integral, but use @b float or @b double as its 
 /// internal storage type. They abstract the IEEE 754 floating point 
 /// values, which are serialized "as is" with either big or little endian
 /// encoding. The floating point value fields also support 
-/// @ref sec_field_tutorial_int_value_units conversions.
+/// @ref sec_field_tutorial_integral_units conversions.
 ///
 /// @section sec_field_tutorial_optional Optional fields_type
 /// Some protocols may define optional fields, which may exist or be missing

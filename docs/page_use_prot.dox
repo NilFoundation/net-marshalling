@@ -848,8 +848,8 @@
 /// message contents and provide other useful functionality.
 ///
 /// The available fields abstractions are:
-/// @li @ref nil::marshalling::types::IntValue - used to define @ref page_use_prot_fields_int_value
-/// @li @ref nil::marshalling::types::EnumValue - used to define @ref page_use_prot_fields_enum_value
+/// @li @ref nil::marshalling::types::IntValue - used to define @ref page_use_prot_fields_integral
+/// @li @ref nil::marshalling::types::EnumValue - used to define @ref page_use_prot_fields_enumeration
 /// @li @ref nil::marshalling::types::BitmaskValue - used to define @ref page_use_prot_fields_bitmask_value
 /// @li @ref nil::marshalling::types::Bitfield - used to define @ref page_use_prot_fields_bitfield
 /// @li @ref nil::marshalling::types::Bundle - used to define @ref page_use_prot_fields_bundle
@@ -859,7 +859,7 @@
 /// @li @ref nil::marshalling::types::Optional - used to define @ref page_use_prot_fields_optional
 /// @li @ref nil::marshalling::types::Variant - used to define @ref page_use_prot_fields_variant
 ///
-/// @subsection page_use_prot_fields_int_value Integral value fields_type
+/// @subsection page_use_prot_fields_integral Integral value fields_type
 /// Integral value fields are defined using @ref nil::marshalling::types::IntValue class.
 /// Its inner @b value_type type is the same as second template parameter. Most
 /// integral value fields are defined and used "as-is"
@@ -963,9 +963,9 @@
 /// assert(field.value() == 25);
 /// @endcode
 ///
-/// @subsection page_use_prot_fields_enum_value Enum value fields_type
+/// @subsection page_use_prot_fields_enumeration Enum value fields_type
 /// The @b enum values are defined using @ref nil::marshalling::types::EnumValue class. It
-/// is very similar to @ref page_use_prot_fields_int_value. The main difference,
+/// is very similar to @ref page_use_prot_fields_integral. The main difference,
 /// that second template parameter as well as inner @b value_type type is @b enum.
 /// The @b enum can be scoped (enum class) or regular (just enum).
 /// @code
@@ -1371,11 +1371,11 @@
 /// @subsection page_use_prot_fields_fp_value Floating Point value fields_type
 /// Floating point value fields are defined using @ref nil::marshalling::types::FloatValue
 /// They are very similar to 
-/// @ref page_use_prot_fields_int_value, but use @b float or @b double as its 
+/// @ref page_use_prot_fields_integral, but use @b float or @b double as its 
 /// internal storage type. They abstract the IEEE 754 floating point 
 /// values, which are serialized "as is" with either big or little endian
 /// encoding. The floating point value fields also support 
-/// the same scaling and units conversion just like @ref page_use_prot_fields_int_value.
+/// the same scaling and units conversion just like @ref page_use_prot_fields_integral.
 ///
 /// @subsection page_use_prot_fields_optional Optional fields_type
 /// Some protocols may define optional fields, which may exist or be missing

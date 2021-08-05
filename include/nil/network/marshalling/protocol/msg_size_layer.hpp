@@ -28,7 +28,6 @@
 
 #include <iterator>
 #include <type_traits>
-#include <nil/marshalling/types/int_value.hpp>
 #include <nil/marshalling/type_traits.hpp>
 
 #include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
@@ -57,8 +56,8 @@ namespace nil {
                 /// @brief Type of the field object used to read/write remaining size value.
                 using field_type = typename base_impl_type::field_type;
 
-                static_assert(is_int_value<field_type>::value,
-                              "field_type must be of int_value type");
+                static_assert(is_integral<field_type>::value,
+                              "field_type must be of integral type");
 
                 /// @brief Default constructor
                 explicit msg_size_layer() = default;

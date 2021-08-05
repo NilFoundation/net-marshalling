@@ -35,6 +35,7 @@
 #include <nil/network/marshalling/generic_handler.hpp>
 #include <nil/network/marshalling/generic_message.hpp>
 #include <nil/marshalling/status_type.hpp>
+#include <nil/marshalling/types/integral.hpp>
 
 template<typename TMessage>
 TMessage
@@ -301,7 +302,7 @@ static_assert(!BoolHandlerMsgBase::has_transport_fields(), "Wrong interface");
 static_assert(!BoolHandlerMsgBase::has_version_in_transport_fields(), "Wrong interface");
 
 typedef std::tuple<
-    nil::marshalling::types::int_value<nil::marshalling::field_type<nil::marshalling::option::big_endian>,
+    nil::marshalling::types::integral<nil::marshalling::field_type<nil::marshalling::option::big_endian>,
                                        std::uint16_t,
                                        nil::marshalling::option::default_num_value<5>>>
     ExtraVersionTransport;

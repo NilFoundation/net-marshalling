@@ -54,7 +54,7 @@
 /// @b NOTE, that most probably the same enum will be used to define a field that
 /// responsible to read / write message ID information in the transport framing. That's
 /// the reason why the underlying type of the enum needs to be specified (please
-/// see @ref sec_field_tutorial_enum_value for more detail).
+/// see @ref sec_field_tutorial_enumeration for more detail).
 ///
 /// After the numeric IDs are specified, there is a need to define common
 /// message interface class by extending @ref nil::marshalling::Message.

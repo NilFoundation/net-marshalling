@@ -39,7 +39,7 @@
 
 #include <nil/marshalling/types/bitmask_value.hpp>
 #include <nil/marshalling/types/bundle.hpp>
-#include <nil/marshalling/types/int_value.hpp>
+#include <nil/marshalling/types/integral.hpp>
 #include <nil/marshalling/types/optional.hpp>
 
 enum message_type {
@@ -59,7 +59,7 @@ template<typename TTraits>
 using TestMessageBase = nil::marshalling::message<TTraits>;
 
 template<typename TField>
-using FieldsMessage1 = std::tuple<nil::marshalling::types::int_value<TField, std::uint16_t>>;
+using FieldsMessage1 = std::tuple<nil::marshalling::types::integral<TField, std::uint16_t>>;
 
 template<typename TMessage>
 class Message1 : public nil::marshalling::message_base<
@@ -117,8 +117,8 @@ public:
 
 template<typename TField>
 using Message3Fields = std::tuple<
-    nil::marshalling::types::int_value<TField, std::uint32_t>,
-    nil::marshalling::types::int_value<TField, std::int16_t, nil::marshalling::option::fixed_length<1>,
+    nil::marshalling::types::integral<TField, std::uint32_t>,
+    nil::marshalling::types::integral<TField, std::int16_t, nil::marshalling::option::fixed_length<1>,
                                        nil::marshalling::option::valid_num_value_range<-120, 120>,
                                        nil::marshalling::option::default_num_value<127>>,    // invalid upon creation
     nil::marshalling::types::bitmask_value<TField, nil::marshalling::option::fixed_length<2>>,
@@ -176,7 +176,7 @@ public:
 template<typename TField>
 using Message4Fields
     = std::tuple<nil::marshalling::types::bitmask_value<TField, nil::marshalling::option::fixed_length<1>>,
-                 nil::marshalling::types::optional<nil::marshalling::types::int_value<TField, std::uint16_t>>>;
+                 nil::marshalling::types::optional<nil::marshalling::types::integral<TField, std::uint16_t>>>;
 
 template<typename TMessage>
 class Message4 : public nil::marshalling::message_base<
@@ -251,8 +251,8 @@ public:
 };
 
 template<typename TField>
-using FieldsMessage5 = std::tuple<nil::marshalling::types::int_value<TField, std::uint16_t>,
-                                  nil::marshalling::types::int_value<TField, std::int8_t>>;
+using FieldsMessage5 = std::tuple<nil::marshalling::types::integral<TField, std::uint16_t>,
+                                  nil::marshalling::types::integral<TField, std::int8_t>>;
 
 template<typename TMessage>
 class Message5 : public nil::marshalling::message_base<
@@ -292,13 +292,13 @@ struct Message6Fields {
         : public nil::marshalling::types::bundle<
               TField,
               std::tuple<nil::marshalling::types::bitmask_value<TField, nil::marshalling::option::fixed_length<1>>,
-                         nil::marshalling::types::optional<nil::marshalling::types::int_value<TField, std::uint16_t>,
+                         nil::marshalling::types::optional<nil::marshalling::types::integral<TField, std::uint16_t>,
                                                            nil::marshalling::option::missing_by_default>>,
               nil::marshalling::option::has_custom_read, nil::marshalling::option::has_custom_refresh> {
         using Base = nil::marshalling::types::bundle<
             TField,
             std::tuple<nil::marshalling::types::bitmask_value<TField, nil::marshalling::option::fixed_length<1>>,
-                       nil::marshalling::types::optional<nil::marshalling::types::int_value<TField, std::uint16_t>,
+                       nil::marshalling::types::optional<nil::marshalling::types::integral<TField, std::uint16_t>,
                                                          nil::marshalling::option::missing_by_default>>,
             nil::marshalling::option::has_custom_read, nil::marshalling::option::has_custom_refresh>;
 
@@ -371,9 +371,9 @@ public:
 
 template<typename TField>
 struct Message7Fields {
-    using field1 = nil::marshalling::types::int_value<TField, std::uint16_t>;
+    using field1 = nil::marshalling::types::integral<TField, std::uint16_t>;
 
-    using field2 = nil::marshalling::types::optional<nil::marshalling::types::int_value<TField, std::uint16_t>,
+    using field2 = nil::marshalling::types::optional<nil::marshalling::types::integral<TField, std::uint16_t>,
                                                      nil::marshalling::option::exists_by_default,
                                                      nil::marshalling::option::exists_between_versions<5, 10>>;
 

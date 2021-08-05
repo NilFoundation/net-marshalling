@@ -45,6 +45,7 @@
 
 #include <nil/network/marshalling/msg_factory.hpp>
 #include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/type_traits.hpp>
 
 namespace nil {
     namespace marshalling {
@@ -100,10 +101,10 @@ namespace nil {
                 /// @brief Type of the field object used to read/write message ID value.
                 using field_type = typename base_impl_type::field_type;
 
-                static_assert(is_int_value<field_type>::value
-                                  || is_enum_value<field_type>::value
+                static_assert(is_integral<field_type>::value
+                                  || is_enumeration<field_type>::value
                                   || is_no_value<field_type>::value,
-                              "field_type must be of int_value or enum_value types");
+                              "field_type must be of integral or enumeration types");
 
                 /// @brief Default constructor.
                 explicit msg_id_layer() = default;
@@ -252,7 +253,7 @@ namespace nil {
                 template<typename TMsg>
                 static msg_id_param_type get_msg_id(const TMsg &msg, polymorphic_op_tag) {
                     using msg_type = typename std::decay<decltype(msg)>::type;
-                    static_assert(nil::marshalling::is_message<msg_type>(),
+                    static_assert(nil::marshalling::is_message<msg_type>::value,
                                   "The message class is expected to inherit from nil::marshalling::message");
                     static_assert(msg_type::interface_options_type::has_msg_id_info,
                                   "The message interface class must expose polymorphic ID retrieval functionality, "

@@ -32,7 +32,8 @@
 #include <cstdint>
 #include <iterator>
 
-#include <nil/marshalling/types/enum_value.hpp>
+#include <nil/marshalling/types/enumeration.hpp>
+#include <nil/marshalling/types/integral.hpp>
 
 #include <nil/network/marshalling/protocol/msg_size_layer.hpp>
 #include <nil/network/marshalling/protocol/transport_value_layer.hpp>
@@ -56,7 +57,7 @@ typedef std::tuple<nil::marshalling::option::msg_id_type<message_type>, nil::mar
 using FieldBase = nil::marshalling::field_type<nil::marshalling::option::big_endian>;
 
 using VersionField
-    = nil::marshalling::types::int_value<FieldBase, std::uint16_t, nil::marshalling::option::default_num_value<5>>;
+    = nil::marshalling::types::integral<FieldBase, std::uint16_t, nil::marshalling::option::default_num_value<5>>;
 
 typedef std::tuple<VersionField> ExtraVersionTransport;
 
@@ -76,9 +77,9 @@ typedef ExtraTransportMessageBase<NonPolymorphicBigEndianTraits> BeNonPolymorphi
 typedef Message1<BeNonPolymorphicMessageBase> NonPolymorphicBeMsg1;
 typedef Message2<BeNonPolymorphicMessageBase> NonPolymorphicBeMsg2;
 
-using SizeField = nil::marshalling::types::int_value<FieldBase, std::uint16_t>;
+using SizeField = nil::marshalling::types::integral<FieldBase, std::uint16_t>;
 
-using IdField = nil::marshalling::types::enum_value<FieldBase, message_type, nil::marshalling::option::fixed_length<2>>;
+using IdField = nil::marshalling::types::enumeration<FieldBase, message_type, nil::marshalling::option::fixed_length<2>>;
 
 template<typename TMessage>
 using BeforeIdProtocolStack = nil::marshalling::protocol::msg_size_layer<

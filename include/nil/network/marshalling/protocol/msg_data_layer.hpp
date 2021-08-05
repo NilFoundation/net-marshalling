@@ -37,15 +37,14 @@
 #include <nil/marshalling/field_type.hpp>
 #include <nil/marshalling/processing/tuple.hpp>
 #include <nil/marshalling/types/array_list.hpp>
-#include <nil/marshalling/types/int_value.hpp>
 
 #include <nil/network/marshalling/message.hpp>
 #include <nil/network/marshalling/message_base.hpp>
 #include <nil/network/marshalling/protocol/protocol_layer_base.hpp>
+#include <nil/network/marshalling/type_traits.hpp>
 
 namespace nil {
     namespace marshalling {
-
         namespace protocol {
 
             /// @brief Message data layer.
@@ -265,7 +264,7 @@ namespace nil {
                 static status_type write(const TMsg &msg, TIter &iter, std::size_t size) {
                     using msg_type = typename std::decay<decltype(msg)>::type;
 
-                    static_assert(nil::marshalling::is_message<msg_type>(),
+                    static_assert(nil::marshalling::is_message<msg_type>::value,
                                   "The provided message object must inherit from nil::marshalling::message");
 
                     using tag = typename std::conditional<detail::protocol_layer_has_fields_impl<msg_type>::value,
@@ -381,7 +380,7 @@ namespace nil {
                 static constexpr std::size_t length(const TMsg &msg) {
                     using msg_type = typename std::decay<decltype(msg)>::type;
 
-                    static_assert(nil::marshalling::is_message<msg_type>(),
+                    static_assert(nil::marshalling::is_message<msg_type>::value,
                                   "The provided message object must inherit from nil::marshalling::message");
 
                     using tag = typename std::conditional<detail::protocol_layer_has_fields_impl<msg_type>::value,
@@ -491,7 +490,7 @@ namespace nil {
                     using MsgPtrType = typename std::decay<decltype(msgPtr)>::type;
                     using msg_type = typename MsgPtrType::element_type;
 
-                    static_assert(nil::marshalling::is_message<msg_type>(),
+                    static_assert(nil::marshalling::is_message<msg_type>::value,
                                   "The provided message object must inherit from nil::marshalling::message");
 
                     static_assert(msg_type::interface_options_type::has_read_iterator,
@@ -525,7 +524,7 @@ namespace nil {
                                                         std::size_t *missingSize = nullptr) {
                     using msg_type = typename std::decay<decltype(msg)>::type;
 
-                    static_assert(nil::marshalling::is_message_base<msg_type>(),
+                    static_assert(nil::marshalling::is_message_base<msg_type::value,
                                   "The provided message object must inherit from nil::marshalling::message_base");
 
                     static_assert(detail::protocol_layer_has_fields_impl<msg_type>::value,

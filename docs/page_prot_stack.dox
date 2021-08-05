@@ -293,7 +293,7 @@
 /// specification, the @b SIZE value must also include @b CHECKSUM. Usage of
 /// nil::marshalling::option::num_value_ser_offset <sizeof(std::uint16_t)> will add 2
 /// (@b sizeof(std::uint16_t)) when serialising the length of wrapped fields.
-/// See also @ref sec_field_tutorial_int_value_ser_offset for more detail.
+/// See also @ref sec_field_tutorial_integral_ser_offset for more detail.
 ///
 /// @section page_prot_stack_tutorial_checksum CHECKSUM Layer
 /// The @b CHECKSUM layer is responsible to calculate and verify the checksum
