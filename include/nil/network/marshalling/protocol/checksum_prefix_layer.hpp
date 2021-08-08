@@ -42,7 +42,7 @@ namespace nil {
             ///     the checksum reported at the beginning of the read data.
             /// @details This protocol layer handles checksum value that usually precedes the
             ///     data. Some protocols use checksum value that follows the data. In this
-            ///     case use @ref ChecksumLayer instead.
+            ///     case use @ref checksum_layer instead.
             /// @tparam TField Type of the field that is used as to represent checksum value.
             /// @tparam TCalc The checksum calculater class that is used to calculate
             ///     the checksum value on the provided buffer. It must have the operator()
@@ -360,7 +360,7 @@ namespace nil {
 
             /// @brief Compile time check of whether the provided type is
             ///     a variant of @ref ChecksumPrefixLayer
-            /// @related ChecksumLayer
+            /// @related checksum_layer
             template<typename T>
             constexpr bool is_checksum_prefix_layer() {
                 return detail::checksum_prefix_layer_check_helper<T>::value;

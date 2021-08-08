@@ -32,7 +32,7 @@
 #include <tuple>
 #include <cstdint>
 
-#include <nil/marshalling/options.hpp>
+#include <nil/network/marshalling/options.hpp>
 #include <nil/network/marshalling/message_base.hpp>
 
 #include <nil/marshalling/types/array_list.hpp>

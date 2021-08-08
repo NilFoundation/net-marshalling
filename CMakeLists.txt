@@ -57,7 +57,6 @@ list(APPEND ${CURRENT_PROJECT_NAME}_PUBLIC_HEADERS
      include/nil/network/marshalling/detail/base_detection.hpp
      include/nil/network/marshalling/detail/bits_access.hpp
      include/nil/network/marshalling/detail/detect.hpp
-     include/nil/network/marshalling/detail/field_base.hpp
      include/nil/network/marshalling/detail/fields_access.hpp
      include/nil/network/marshalling/detail/gen_enum.hpp
      include/nil/network/marshalling/detail/macro_common.hpp

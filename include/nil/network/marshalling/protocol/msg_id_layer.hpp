@@ -51,7 +51,7 @@ namespace nil {
     namespace marshalling {
         namespace protocol {
 
-            /// @brief Protocol layer that uses uses message ID field as a prefix to all the
+            /// @brief Protocol layer that uses message ID field as a prefix to all the
             ///        subsequent data written by other (next) layers.
             /// @details The main purpose of this layer is to process the message ID information.
             ///     Holds instance of nil::marshalling::msg_factory as its private member and uses it

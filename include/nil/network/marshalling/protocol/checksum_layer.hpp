@@ -54,12 +54,12 @@ namespace nil {
             /// @tparam TNextLayer Next transport layer in protocol stack.
             /// @tparam TOptions Extending functionality options. Supported options are:
             ///     @li nil::marshalling::option::ChecksumLayerVerifyBeforeRead - By default, the
-            ///         @b ChecksumLayer will invoke @b read operation of inner (wrapped) layers
+            ///         @b checksum_layer will invoke @b read operation of inner (wrapped) layers
             ///         and only if it is successful, it will calculate and verify the
             ///         checksum value. Usage of nil::marshalling::option::ChecksumLayerVerifyBeforeRead
             ///         modifies the default behaviour by forcing the checksum verification
             ///         prior to invocation of @b read operation in the wrapped layer(s).
-            /// @headerfile nil/network/marshalling/protocol/ChecksumLayer.h
+            /// @headerfile nil/network/marshalling/protocol/checksum_layer.h
             template<typename TField, typename TCalc, typename TNextLayer, typename... TOptions>
             class checksum_layer
                 : public protocol_layer_base<TField, TNextLayer, checksum_layer<TField, TCalc, TNextLayer, TOptions...>,
@@ -364,8 +364,8 @@ namespace nil {
             }    // namespace detail
 
             /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref ChecksumLayer
-            /// @related ChecksumLayer
+            ///     a variant of @ref checksum_layer
+            /// @related checksum_layer
             template<typename T>
             constexpr bool is_checksum_layer() {
                 return detail::checksum_layer_check_helper<T>::value;

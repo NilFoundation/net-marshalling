@@ -26,7 +26,7 @@
 #ifndef NETWORK_MARSHALLING_PROTOCOL_LAYER_BASE_OPTIONS_PARSER_HPP
 #define NETWORK_MARSHALLING_PROTOCOL_LAYER_BASE_OPTIONS_PARSER_HPP
 
-#include <nil/marshalling/options.hpp>
+#include <nil/network/marshalling/options.hpp>
 
 namespace nil {
     namespace marshalling {

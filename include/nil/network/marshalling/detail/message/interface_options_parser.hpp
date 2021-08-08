@@ -31,7 +31,7 @@
 
 #include <nil/detail/type_traits.hpp>
 
-#include <nil/marshalling/options.hpp>
+#include <nil/network/marshalling/options.hpp>
 #include <nil/marshalling/processing/tuple.hpp>
 
 namespace nil {

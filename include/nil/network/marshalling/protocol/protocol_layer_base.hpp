@@ -36,7 +36,7 @@
 #include <nil/marshalling/status_type.hpp>
 #include <nil/marshalling/processing/tuple.hpp>
 #include <nil/marshalling/assert_type.hpp>
-#include <nil/marshalling/options.hpp>
+#include <nil/network/marshalling/options.hpp>
 
 #include <nil/network/marshalling/protocol/detail/protocol_layer_base_options_parser.hpp>
 #include <nil/network/marshalling/detail/protocol_layers_access.hpp>

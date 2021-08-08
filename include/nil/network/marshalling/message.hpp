@@ -50,7 +50,7 @@ namespace nil {
         ///     options to define functionality/behaviour of the message.
         ///     The options may be comma separated as well as bundled
         ///     into std::tuple. Supported options are:
-        ///     @li @ref nil::marshalling::option::BigEndian or @ref nil::marshalling::option::LittleEndian - options
+        ///     @li @ref nil::marshalling::option::big_endian or @ref nil::marshalling::option::little_endian - options
         ///         used to specify endianness of the serialization. If this option is
         ///         @ref field_type internal types get defined.
         ///         used, read_data() functions as well as @ref endian_type and
