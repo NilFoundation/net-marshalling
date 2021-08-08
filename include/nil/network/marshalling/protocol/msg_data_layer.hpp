@@ -524,7 +524,7 @@ namespace nil {
                                                         std::size_t *missingSize = nullptr) {
                     using msg_type = typename std::decay<decltype(msg)>::type;
 
-                    static_assert(nil::marshalling::is_message_base<msg_type::value,
+                    static_assert(nil::marshalling::is_message_base<msg_type>::value,
                                   "The provided message object must inherit from nil::marshalling::message_base");
 
                     static_assert(detail::protocol_layer_has_fields_impl<msg_type>::value,

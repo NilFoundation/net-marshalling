@@ -66,6 +66,7 @@ class Message1 : public nil::marshalling::message_base<
                      TMessage, nil::marshalling::option::static_num_id_impl<MessageType1>,
                      nil::marshalling::option::fields_impl<FieldsMessage1<typename TMessage::field_type>>,
                      nil::marshalling::option::msg_type<Message1<TMessage>>, nil::marshalling::option::has_name> {
+                        
     using Base = nil::marshalling::message_base<
         TMessage, nil::marshalling::option::static_num_id_impl<MessageType1>,
         nil::marshalling::option::fields_impl<FieldsMessage1<typename TMessage::field_type>>,
