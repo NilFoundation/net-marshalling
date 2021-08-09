@@ -53,10 +53,10 @@ namespace nil {
             ///     assigning it as a value of the check field being read and/or written.
             /// @tparam TNextLayer Next transport layer in protocol stack.
             /// @tparam TOptions Extending functionality options. Supported options are:
-            ///     @li nil::marshalling::option::ChecksumLayerVerifyBeforeRead - By default, the
+            ///     @li nil::marshalling::option::checksum_layer_verify_before_read - By default, the
             ///         @b checksum_layer will invoke @b read operation of inner (wrapped) layers
             ///         and only if it is successful, it will calculate and verify the
-            ///         checksum value. Usage of nil::marshalling::option::ChecksumLayerVerifyBeforeRead
+            ///         checksum value. Usage of nil::marshalling::option::checksum_layer_verify_before_read
             ///         modifies the default behaviour by forcing the checksum verification
             ///         prior to invocation of @b read operation in the wrapped layer(s).
             /// @headerfile nil/network/marshalling/protocol/checksum_layer.h
@@ -349,27 +349,6 @@ namespace nil {
                     return write_internal_output(field, msg, iter, size, std::forward<TWriter>(nextLayerWriter));
                 }
             };
-
-            namespace detail {
-                template<typename T>
-                struct checksum_layer_check_helper {
-                    static const bool value = false;
-                };
-
-                template<typename TField, typename TCalc, typename TNextLayer, typename... TOptions>
-                struct checksum_layer_check_helper<checksum_layer<TField, TCalc, TNextLayer, TOptions...>> {
-                    static const bool value = true;
-                };
-
-            }    // namespace detail
-
-            /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref checksum_layer
-            /// @related checksum_layer
-            template<typename T>
-            constexpr bool is_checksum_layer() {
-                return detail::checksum_layer_check_helper<T>::value;
-            }
 
         }    // namespace protocol
 

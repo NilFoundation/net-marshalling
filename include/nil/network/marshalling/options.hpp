@@ -189,7 +189,7 @@ namespace nil {
             struct in_place_allocation { };
 
             /// @brief Option used to allow @ref nil::marshalling::generic_message generation inside
-            ///  @ref nil::marshalling::msg_factory and/or @ref nil::marshalling::protocol::MsgIdLayer classes.
+            ///  @ref nil::marshalling::msg_factory and/or @ref nil::marshalling::protocol::msg_id_layer classes.
             /// @tparam TGenericMessage Type of message, expected to be a variant of
             ///     @ref nil::marshalling::generic_message.
             template<typename TGenericMessage>
@@ -201,7 +201,7 @@ namespace nil {
             struct no_virtual_destructor { };
 
             /// @brief Force nil::marshalling::protocol::checksum_layer and
-            ///     nil::marshalling::protocol::ChecksumPrefixLayer, to verify checksum prior to
+            ///     nil::marshalling::protocol::checksum_prefix_layer, to verify checksum prior to
             ///     forwarding read to the wrapped layer(s).
             /// @headerfile nil/marshalling/options.h
             struct checksum_layer_verify_before_read { };
@@ -234,7 +234,7 @@ namespace nil {
             /// @headerfile nil/marshalling/options.h
             using has_do_refresh = has_custom_refresh;
 
-            /// @brief Option for @ref nil::marshalling::protocol::TransportValueLayer to
+            /// @brief Option for @ref nil::marshalling::protocol::transport_value_layer to
             ///     mark that the handled field is a "pseudo" one, i.e. is not serialized.
             struct pseudo_value { };
 

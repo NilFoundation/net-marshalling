@@ -40,10 +40,10 @@ namespace nil {
             ///        subsequent data written by other (next) layers.
             /// @details The main purpose of this layer is to provide information about
             ///     the remaining size of the serialized message. This layer is a mid level
-            ///     layer, expects other mid level layer or MsgDataLayer to be its next one.
+            ///     layer, expects other mid level layer or msg_data_layer to be its next one.
             /// @tparam TField Type of the field that describes the "size" field.
             /// @tparam TNextLayer Next transport layer in protocol stack.
-            /// @headerfile nil/network/marshalling/protocol/MsgSizeLayer.h
+            /// @headerfile nil/network/marshalling/protocol/msg_size_layer.h
             template<typename TField, typename TNextLayer>
             class msg_size_layer
                 : public protocol_layer_base<TField, TNextLayer, msg_size_layer<TField, TNextLayer>,
@@ -337,27 +337,6 @@ namespace nil {
                     return field_type(static_cast<FieldValueType>(remSize)).length();
                 }
             };
-
-            namespace detail {
-                template<typename T>
-                struct msg_size_layer_check_helper {
-                    static const bool value = false;
-                };
-
-                template<typename TField, typename TNextLayer>
-                struct msg_size_layer_check_helper<msg_size_layer<TField, TNextLayer>> {
-                    static const bool value = true;
-                };
-
-            }    // namespace detail
-
-            /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref MsgSizeLayer
-            /// @related MsgSizeLayer
-            template<typename T>
-            constexpr bool is_msg_size_layer() {
-                return detail::msg_size_layer_check_helper<T>::value;
-            }
 
         }    // namespace protocol
     }        // namespace marshalling

@@ -33,11 +33,8 @@
 
 namespace nil {
     namespace marshalling {
-
         namespace protocol {
-
             namespace checksum {
-
                 namespace detail {
 
                     template<typename TResult>
@@ -320,9 +317,7 @@ namespace nil {
                 using crc_32 = crc<std::uint32_t, 0x04c11db7, 0xffffffff, 0xffffffff, true, true>;
 
             }    // namespace checksum
-
         }    // namespace protocol
-
     }    // namespace marshalling
 }    // namespace nil
 #endif    // NETWORK_MARSHALLING_CRC_HPP

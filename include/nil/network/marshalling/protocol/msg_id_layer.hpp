@@ -63,7 +63,7 @@ namespace nil {
             /// @tparam TNextLayer Next transport layer type.
             /// @tparam TOptions All the options that will be forwarded to definition of
             ///     message factory type (nil::marshalling::msg_factory).
-            /// @headerfile nil/network/marshalling/protocol/MsgIdLayer.h
+            /// @headerfile nil/network/marshalling/protocol/msg_id_layer.h
             template<typename TField, typename TMessage, typename TAllMessages, typename TNextLayer,
                      typename... TOptions>
             class msg_id_layer
@@ -411,31 +411,7 @@ namespace nil {
                 factory_type factory_;
             };
 
-            namespace detail {
-                template<typename T>
-                struct msg_id_layer_check_helper {
-                    static const bool value = false;
-                };
-
-                template<typename TField, typename TMessage, typename TAllMessages, typename TNextLayer,
-                         typename... TOptions>
-                struct msg_id_layer_check_helper<
-                    msg_id_layer<TField, TMessage, TAllMessages, TNextLayer, TOptions...>> {
-                    static const bool value = true;
-                };
-
-            }    // namespace detail
-
-            /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref MsgIdLayer
-            /// @related MsgIdLayer
-            template<typename T>
-            constexpr bool is_msg_id_layer() {
-                return detail::msg_id_layer_check_helper<T>::value;
-            }
-
         }    // namespace protocol
-
     }    // namespace marshalling
 }    // namespace nil
 #endif    // NETWORK_MARSHALLING_MSG_ID_LAYER_HPP

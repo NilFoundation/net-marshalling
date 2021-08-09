@@ -122,7 +122,7 @@ namespace nil {
 
             }    // namespace detail
 
-            /// @brief Base class for all the middle (non @ref MsgDataLayer) protocol transport layers.
+            /// @brief Base class for all the middle (non @ref msg_data_layer) protocol transport layers.
             /// @details Provides all the default and/or common functionality for the
             ///     middle transport layer. The inheriting actual layer class may
             ///     use and/or override the provided functionality by redefining member
@@ -136,7 +136,7 @@ namespace nil {
             /// @tparam TOptions Extra options. Supported ones are:
             ///     @li @ref nil::marshalling::option::ProtocolLayerForceReadUntilDataSplit
             ///     @li @ref nil::marshalling::option::ProtocolLayerDisallowReadUntilDataSplit
-            /// @headerfile nil/network/marshalling/protocol/ProtocolLayerBase.h
+            /// @headerfile nil/network/marshalling/protocol/protocol_layer_base.h
             template<typename TField, typename TNextLayer, typename TDerived, typename... TOptions>
             class protocol_layer_base {
             public:
@@ -224,7 +224,7 @@ namespace nil {
                 ///     and logic:
                 ///     @code
                 ///         template<typename TMsg, typename TIter, typename TNextLayerReader>
-                ///         nil::marshalling::ErrorStatus eval_read(
+                ///         nil::marshalling::error_status eval_read(
                 ///             field_type& field, // field object used to read required data
                 ///             TMsg& msg, // Ref to smart pointer to message object, or message object itself
                 ///             TIter& iter, // iterator used for reading
@@ -252,7 +252,7 @@ namespace nil {
                 /// @param[in, out] iter Input iterator used for reading.
                 /// @param[in] size Size of the data in the sequence
                 /// @param[out] missingSize If not nullptr and return value is
-                ///             nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///             nil::marshalling::error_status::not_enough_data it will contain
                 ///             minimal missing data length required for the successful
                 ///             read attempt.
                 /// @return Status of the operation.
@@ -261,10 +261,10 @@ namespace nil {
                 /// @post The iterator will be advanced by the number of bytes was actually
                 ///       read. In case of an error, distance between original position and
                 ///       advanced will pinpoint the location of the error.
-                /// @post Returns nil::marshalling::ErrorStatus::Success if and only if msg points
+                /// @post Returns nil::marshalling::error_status::Success if and only if msg points
                 ///       to a valid object.
                 /// @post missingSize output value is updated if and only if function
-                ///       returns nil::marshalling::ErrorStatus::NotEnoughData.
+                ///       returns nil::marshalling::error_status::not_enough_data.
                 template<typename TMsg, typename TIter>
                 nil::marshalling::status_type read(TMsg &msg, TIter &iter, std::size_t size,
                                                    std::size_t *missingSize = nullptr) {
@@ -287,7 +287,7 @@ namespace nil {
                 /// @param[in, out] iter Input iterator used for reading.
                 /// @param[in] size Size of the data in the sequence
                 /// @param[out] missingSize If not nullptr and return value is
-                ///             nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///             nil::marshalling::error_status::not_enough_data it will contain
                 ///             minimal missing data length required for the successful
                 ///             read attempt.
                 /// @return Status of the operation.
@@ -297,7 +297,7 @@ namespace nil {
                 ///       read. In case of an error, distance between original position and
                 ///       advanced will pinpoint the location of the error.
                 /// @post missingSize output value is updated if and only if function
-                ///       returns nil::marshalling::ErrorStatus::NotEnoughData.
+                ///       returns nil::marshalling::error_status::not_enough_data.
                 template<typename TMsg, typename TIter>
                 nil::marshalling::status_type read_until_data(TMsg &msg, TIter &iter, std::size_t size,
                                                               std::size_t *missingSize = nullptr) {
@@ -319,7 +319,7 @@ namespace nil {
                 /// @param[in, out] iter Input iterator used for reading.
                 /// @param[in] size Size of the data in the sequence
                 /// @param[out] missingSize If not nullptr and return value is
-                ///             nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///             nil::marshalling::error_status::not_enough_data it will contain
                 ///             minimal missing data length required for the successful
                 ///             read attempt.
                 /// @return Status of the operation.
@@ -329,7 +329,7 @@ namespace nil {
                 ///       read. In case of an error, distance between original position and
                 ///       advanced will pinpoint the location of the error.
                 /// @post missingSize output value is updated if and only if function
-                ///       returns nil::marshalling::ErrorStatus::NotEnoughData.
+                ///       returns nil::marshalling::error_status::not_enough_data.
                 template<typename TMsg, typename TIter>
                 nil::marshalling::status_type read_from_data(TMsg &msg, TIter &iter, std::size_t size,
                                                              std::size_t *missingSize = nullptr) {
@@ -355,7 +355,7 @@ namespace nil {
                 /// @param[in, out] iter Iterator used for reading.
                 /// @param[in] size Number of bytes available for reading.
                 /// @param[out] missingSize If not nullptr and return value is
-                ///             nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///             nil::marshalling::error_status::not_enough_data it will contain
                 ///             minimal missing data length required for the successful
                 ///             read attempt.
                 /// @return Status of the operation.
@@ -392,7 +392,7 @@ namespace nil {
                 /// @param[in, out] iter Iterator used for reading.
                 /// @param[in] size Number of bytes available for reading.
                 /// @param[out] missingSize If not nullptr and return value is
-                ///             nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///             nil::marshalling::error_status::not_enough_data it will contain
                 ///             minimal missing data length required for the successful
                 ///             read attempt.
                 /// @return Status of the operation.
@@ -429,7 +429,7 @@ namespace nil {
                 /// @param[in, out] iter Iterator used for reading.
                 /// @param[in] size Number of bytes available for reading.
                 /// @param[out] missingSize If not nullptr and return value is
-                ///             nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///             nil::marshalling::error_status::not_enough_data it will contain
                 ///             minimal missing data length required for the successful
                 ///             read attempt.
                 /// @return Status of the operation.
@@ -446,7 +446,7 @@ namespace nil {
                 ///     and logic:
                 ///     @code
                 ///         template<typename TMsg, typename TIter, typename TNextLayerWriter>
-                ///         nil::marshalling::ErrorStatus eval_write(
+                ///         nil::marshalling::error_status eval_write(
                 ///             field_type& field, // field object used to update and write required data
                 ///             const TMsg& msg, // reference to ready to be sent message object
                 ///             TIter& iter, // iterator used for writing
@@ -551,7 +551,7 @@ namespace nil {
                 /// @details Sometimes, when NON random access iterator is used for writing
                 ///     (for example std::back_insert_iterator), some transport data cannot
                 ///     be properly written. In this case, @ref write() function will return
-                ///     nil::marshalling::ErrorStatus::UpdateRequired. When such status is returned
+                ///     nil::marshalling::error_status::UpdateRequired. When such status is returned
                 ///     it is necessary to call update() with random access iterator on
                 ///     the written buffer to update written dummy information with
                 ///     proper values.@n
@@ -560,7 +560,7 @@ namespace nil {
                 ///     and logic:
                 ///     @code
                 ///         template<typename TIter, typename TNextLayerUpdater>
-                ///         nil::marshalling::ErrorStatus eval_update(
+                ///         nil::marshalling::error_status eval_update(
                 ///             field_type& field, // field object to update and re-write if necessary
                 ///             TIter& iter, // iterator used for updateing
                 ///             std::size_t size, // Number of remaning bytes in the output buffer.
@@ -653,7 +653,7 @@ namespace nil {
 
                 /// @brief Create message object given the ID.
                 /// @details The default implementation is to forwards this call to the next
-                ///     layer. One of the layers (usually nil::marshalling::protocol::MsgIdLayer)
+                ///     layer. One of the layers (usually nil::marshalling::protocol::msg_id_layer)
                 ///     hides and overrides this implementation.
                 /// @tparam TMsg Type of message ID.
                 /// @param id ID of the message.
@@ -694,7 +694,7 @@ namespace nil {
 
                 /// @brief Reset msg in case it is a smart pointer (@ref msg_ptr_type).
                 /// @details Does nothing if passed parameter is actual message object.
-                /// @see @ref isMessageObjRef().
+                /// @see @ref is_message_obj_ref().
                 template<typename TMsg>
                 static void reset_msg(TMsg &msg) {
                     using tag =
@@ -988,13 +988,13 @@ namespace nil {
 /// @brief Provide names and convenience access functions to protocol
 ///     layers.
 /// @details The first argument is a name for innermost layer
-///     (@ref nil::marshalling::protocol::MsgDataLayer), while the last one
+///     (@ref nil::marshalling::protocol::msg_data_layer), while the last one
 ///     is the name for the outermost one.
-/// @related nil::marshalling::protocol::ProtocolLayerBase
+/// @related nil::marshalling::protocol::protocol_layer_base
 #define MARSHALLING_PROTOCOL_LAYERS_ACCESS(...) MARSHALLING_DO_ACCESS_LAYER_ACC_FUNC(__VA_ARGS__)
 
 /// @brief Same as @ref MARSHALLING_PROTOCOL_LAYERS_ACCESS()
-/// @related nil::marshalling::protocol::ProtocolLayerBase
+/// @related nil::marshalling::protocol::protocol_layer_base
 #define MARSHALLING_PROTOCOL_LAYERS_ACCESS_INNER(...) MARSHALLING_PROTOCOL_LAYERS_ACCESS(__VA_ARGS__)
 
 /// @brief Provide names and convenience access functions to protocol
@@ -1003,8 +1003,8 @@ namespace nil {
 ///     the arguments are expected to be in reverse order, i.e.
 ///     the first argument is the name of the outermost layer, while
 ///     the last one is the name for the innermost one
-///     (@ref nil::marshalling::protocol::MsgDataLayer)
-/// @related nil::marshalling::protocol::ProtocolLayerBase
+///     (@ref nil::marshalling::protocol::msg_data_layer)
+/// @related nil::marshalling::protocol::protocol_layer_base
 #define MARSHALLING_PROTOCOL_LAYERS_ACCESS_OUTER(...) \
     MARSHALLING_PROTOCOL_LAYERS_ACCESS(MARSHALLING_EXPAND(MARSHALLING_REVERSE_MACRO_ARGS(__VA_ARGS__)))
 #endif    // NETWORK_MARSHALLING_PROTOCOL_LAYER_BASE_HPP

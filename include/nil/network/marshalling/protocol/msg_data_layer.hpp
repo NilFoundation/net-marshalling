@@ -52,7 +52,7 @@ namespace nil {
             /// @tparam TExtraOpts Extra options to inner @ref field_type type which is defined
             ///     to be @ref nil::marshalling::types::array_list. This field is used only in @ref
             ///     all_fields_type type and @ref read_fields_cached() member function.
-            /// @headerfile nil/network/marshalling/protocol/MsgDataLayer.h
+            /// @headerfile nil/network/marshalling/protocol/msg_data_layer.h
             template<typename... TExtraOpts>
             class msg_data_layer {
             public:
@@ -587,27 +587,6 @@ namespace nil {
                     return msg.eval_write(iter, size);
                 }
             };
-
-            namespace detail {
-                template<typename T>
-                struct msg_data_layer_check_helper {
-                    static const bool value = false;
-                };
-
-                template<typename... TExtraOpts>
-                struct msg_data_layer_check_helper<msg_data_layer<TExtraOpts...>> {
-                    static const bool value = true;
-                };
-
-            }    // namespace detail
-
-            /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref MsgDataLayer
-            /// @related MsgDataLayer
-            template<typename T>
-            constexpr bool is_msg_data_layer() {
-                return detail::msg_data_layer_check_helper<T>::value;
-            }
 
             template<typename... TExtraOpts>
             constexpr msg_data_layer<TExtraOpts...> &to_protocol_layer_base(msg_data_layer<TExtraOpts...> &layer) {

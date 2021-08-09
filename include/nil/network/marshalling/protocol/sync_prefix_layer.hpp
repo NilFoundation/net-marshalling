@@ -37,15 +37,16 @@ namespace nil {
             /// @details The main purpose of this layer is to provide a constant synchronisation
             ///     prefix to help identify the beginning of the serialized message.
             ///     This layer is a mid level layer, expects other mid level layer or
-            ///     MsgDataLayer to be its next one.
+            ///     msg_data_layer to be its next one.
             /// @tparam TField Type of the field that is used as sync prefix. The "sync"
-            ///     field type definition must use options (nil::marshalling::option::DefaultNumValue)
+            ///     field type definition must use options (nil::marshalling::option::default_num_value)
             ///     to specify its default value to be equal to the expected "sync" value.
             /// @tparam TNextLayer Next transport layer in protocol stack.
-            /// @headerfile nil/network/marshalling/protocol/SyncPrefixLayer.h
+            /// @headerfile nil/network/marshalling/protocol/sync_prefix_layer.h
             template<typename TField, typename TNextLayer>
             class sync_prefix_layer
                 : public protocol_layer_base<TField, TNextLayer, sync_prefix_layer<TField, TNextLayer>> {
+
                 using base_impl_type = protocol_layer_base<TField, TNextLayer, sync_prefix_layer<TField, TNextLayer>>;
 
             public:
@@ -67,7 +68,7 @@ namespace nil {
                 /// @brief Customized read functionality, invoked by @ref read().
                 /// @details Reads the "sync" value from the input data. If the read value
                 ///     is NOT as expected (doesn't equal to the default constructed
-                ///     @ref field_type), then nil::marshalling::ErrorStatus::ProtocolError is returned.
+                ///     @ref field_type), then nil::marshalling::error_status::protocol_error is returned.
                 ////    If the read "sync" value as expected, the read() member function of
                 ///     the next layer is called.
                 /// @tparam TMsg Type of the @b msg parameter.
@@ -80,7 +81,7 @@ namespace nil {
                 /// @param[in, out] iter Input iterator used for reading.
                 /// @param[in] size Size of the data in the sequence
                 /// @param[out] missingSize If not nullptr and return value is
-                ///     nil::marshalling::ErrorStatus::NotEnoughData it will contain
+                ///     nil::marshalling::error_status::not_enough_data it will contain
                 ///     minimal missing data length required for the successful
                 ///     read attempt.
                 /// @param[in] nextLayerReader Next layer reader object.
@@ -91,7 +92,7 @@ namespace nil {
                 ///       read. In case of an error, distance between original position and
                 ///       advanced will pinpoint the location of the error.
                 /// @post missingSize output value is updated if and only if function
-                ///       returns nil::marshalling::ErrorStatus::NotEnoughData.
+                ///       returns nil::marshalling::error_status::not_enough_data.
                 template<typename TMsg, typename TIter, typename TNextLayerReader>
                 nil::marshalling::status_type eval_read(field_type &field, TMsg &msg, TIter &iter, std::size_t size,
                                                         std::size_t *missingSize, TNextLayerReader &&nextLayerReader) {
@@ -141,27 +142,6 @@ namespace nil {
                     return nextLayerWriter.write(msg, iter, size - field.length());
                 }
             };
-
-            namespace detail {
-                template<typename T>
-                struct sync_prefix_layer_check_helper {
-                    static const bool value = false;
-                };
-
-                template<typename TField, typename TNextLayer>
-                struct sync_prefix_layer_check_helper<sync_prefix_layer<TField, TNextLayer>> {
-                    static const bool value = true;
-                };
-
-            }    // namespace detail
-
-            /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref SyncPrefixLayer
-            /// @related SyncPrefixLayer
-            template<typename T>
-            constexpr bool is_sync_prefix_layer() {
-                return detail::sync_prefix_layer_check_helper<T>::value;
-            }
 
         }    // namespace protocol
     }        // namespace marshalling

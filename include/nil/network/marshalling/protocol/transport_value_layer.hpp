@@ -45,7 +45,7 @@ namespace nil {
             ///     @ref nil::marshalling::option::extra_transport_fields_type option to the interface definition
             ///     @ref nil::marshalling::message class.
             ///     This layer is a mid level layer, expects other mid level layer or
-            ///     MsgDataLayer to be its next one.
+            ///     msg_data_layer to be its next one.
             /// @tparam TField Type of the field that is used read / write extra transport value.
             /// @tparam TIdx Index of "extra transport" field that message object contains
             ///     (accessed via @ref nil::marshalling::message::transport_fields()).
@@ -53,7 +53,7 @@ namespace nil {
             /// @tparam TOptions Extending functionality options. Supported options are:
             ///     @li @ref nil::marshalling::option::PseudoValue - Mark the handled value to be "pseudo"
             ///         one, i.e. the field is not getting serialized.
-            /// @headerfile nil/network/marshalling/protocol/TransportValueLayer.h
+            /// @headerfile nil/network/marshalling/protocol/transport_value_layer.h
             /// @extends ProtocolLayerBase
             template<typename TField, std::size_t TIdx, typename TNextLayer, typename... TOptions>
             class transport_value_layer
@@ -94,7 +94,7 @@ namespace nil {
                 ///     Note, that this operation works fine even if message object is created
                 ///     after reading the transport value. There is "inner magic" that causes
                 ///     read operation to proceed until @b DATA layer
-                ///     (implemented by @ref nil::marshalling::protocol::MsgDataLayer), assigns the
+                ///     (implemented by @ref nil::marshalling::protocol::msg_data_layer), assigns the
                 ///     read value to message object, then proceeds to reading the message
                 ///     contents, i.e. when @ref nil::marshalling::message::read() function is invoked
                 ///     the message object already has the value of the transport field updated.
@@ -307,27 +307,6 @@ namespace nil {
                     return es;
                 }
             };
-
-            namespace detail {
-                template<typename T>
-                struct transport_value_layer_check_helper {
-                    static const bool value = false;
-                };
-
-                template<typename TField, std::size_t TIdx, typename TNextLayer>
-                struct transport_value_layer_check_helper<transport_value_layer<TField, TIdx, TNextLayer>> {
-                    static const bool value = true;
-                };
-
-            }    // namespace detail
-
-            /// @brief Compile time check of whether the provided type is
-            ///     a variant of @ref TransportValueLayer
-            /// @related TransportValueLayer
-            template<typename T>
-            constexpr bool is_transport_value_layer() {
-                return detail::transport_value_layer_check_helper<T>::value;
-            }
 
         }    // namespace protocol
     }        // namespace marshalling

@@ -58,7 +58,7 @@ namespace nil {
         ///     The generic_message can be useful when implementing some kind of
         ///     "bridge" or "firewall", that requires knowledge only about message
         ///     ID and doesn't care much about message contents. The
-        ///     @ref nil::marshalling::protocol::MsgIdLayer support creation of the
+        ///     @ref nil::marshalling::protocol::msg_id_layer support creation of the
         ///     generic_message in case the received message ID is not known (supported
         ///     by using @ref nil::marshalling::option::SupportGenericMessage option).
         /// @tparam TMessage Common message interface class, becomes one of the
