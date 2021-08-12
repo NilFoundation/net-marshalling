@@ -98,6 +98,7 @@ class Message2
                                             nil::marshalling::option::zero_fields_impl,
                                             nil::marshalling::option::msg_type<Message2<TMessage>>,
                                             nil::marshalling::option::has_name> {
+                                                
     using Base = nil::marshalling::message_base<TMessage, nil::marshalling::option::static_num_id_impl<MessageType2>,
                                                 nil::marshalling::option::zero_fields_impl,
                                                 nil::marshalling::option::msg_type<Message2<TMessage>>,

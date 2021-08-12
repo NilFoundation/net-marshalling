@@ -26,53 +26,82 @@
 #ifndef NETWORK_MARSHALLING_PROTOCOL_ETHERNET_HPP
 #define NETWORK_MARSHALLING_PROTOCOL_ETHERNET_HPP
 
+#include <nil/marshalling/options.hpp>
+#include <nil/marshalling/types/array_list.hpp>
+#include <nil/marshalling/types/integral.hpp>
+
+#include <nil/network/marshalling/detail/base_detection.hpp>
+#include <nil/network/marshalling/message.hpp>
+#include <nil/network/marshalling/options.hpp>
+
 namespace nil {
     namespace marshalling {
         namespace types {
+            namespace detail {
 
-            template <typename Endianness = nil::marshalling::option::little_endian>
-            using mac_header = nil::marshalling::types::bundle<
-                // Destination MAC Address
-                nil::marshalling::types::array_list<
-                    nil::marshalling::field_type<Endianness>,
-                    nil::marshalling::types::integral<
-                        nil::marshalling::field_type<Endianness>, 
-                        std::uint8_t>,
-                nil::marshalling::option::fixed_size_storage<6>>,
-                // Source MAC Address
-                nil::marshalling::types::array_list<
-                    nil::marshalling::field_type<Endianness>,
-                    nil::marshalling::types::integral<
-                        nil::marshalling::field_type<Endianness>, 
-                        std::uint8_t>,
-                nil::marshalling::option::fixed_size_storage<6>>,
-                // EtherType
-                nil::marshalling::types::integral<
+                template <typename Endianness = nil::marshalling::option::big_endian>
+                using mac_addresses_marshalling_type = std::tuple<
+                    // Destination MAC Address
+                    nil::marshalling::types::array_list<
+                        nil::marshalling::field_type<Endianness>,
+                        nil::marshalling::types::integral<
+                            nil::marshalling::field_type<Endianness>, 
+                            std::uint8_t>,
+                    nil::marshalling::option::fixed_size_storage<6>>,
+                    // Source MAC Address
+                    nil::marshalling::types::array_list<
+                        nil::marshalling::field_type<Endianness>,
+                        nil::marshalling::types::integral<
+                            nil::marshalling::field_type<Endianness>, 
+                            std::uint8_t>,
+                    nil::marshalling::option::fixed_size_storage<6>>>;
+
+                template<typename TOptions = nil::marshalling::option::empty_option>
+                struct ethernet_type2_message_interface
+                    : public nil::marshalling::message<
+                        TOptions,
+                        nil::marshalling::option::extra_transport_fields<mac_addresses_marshalling_type>> {
+#ifdef MARSHALLING_MUST_DEFINE_BASE
+                    using Base
+                        = nil::marshalling::message<
+                            TOptions, 
+                            nil::marshalling::option::extra_transport_fields<mac_addresses_marshalling_type>>;
+#endif
+                public:
+                    MARSHALLING_MSG_TRANSPORT_FIELDS_ACCESS(version);
+                };
+
+                template<std::size_t TLen = 4, typename Endianness = nil::marshalling::option::big_endian>
+                using checksum_field_type = nil::marshalling::types::integral<
                     nil::marshalling::field_type<Endianness>, 
-                    std::uint16_t>>;
+                    typename nil::marshalling::processing::size_to_type<TLen>::type>;
 
-            template<typename TSyncField, typename TChecksumField, typename TSizeField, typename TIdField, typename TMessage>
-            struct ethernet_type2_frame
-                : public nil::marshalling::protocol::sync_prefix_layer<
-                      TSyncField,
-                      nil::marshalling::protocol::checksum_layer<
-                          TChecksumField, nil::marshalling::protocol::checksum::crc_32,
-                          nil::marshalling::protocol::msg_size_layer<
-                              TSizeField,
-                              nil::marshalling::protocol::msg_id_layer<TIdField, TMessage, all_messages_type<TMessage>,
-                                                                       nil::marshalling::protocol::msg_data_layer<>>>>> {
-            #ifdef MARSHALLING_MUST_DEFINE_BASE
-                using Base = nil::marshalling::protocol::sync_prefix_layer<
-                    TSyncField,
-                    nil::marshalling::protocol::checksum_layer<
-                        TChecksumField, nil::marshalling::protocol::checksum::crc_32,
-                        nil::marshalling::protocol::msg_size_layer<
-                            TSizeField, nil::marshalling::protocol::msg_id_layer<TIdField, TMessage, all_messages_type<TMessage>,
-                                                                                 nil::marshalling::protocol::msg_data_layer<>>>>>;
-            #endif
-            public:
-                MARSHALLING_PROTOCOL_LAYERS_ACCESS_OUTER(sync, checksum, size, id, payload);
-            };
+
+                // Ether type defines protocol type. Default value is 0x0800 - IPv4
+                template<typename Endianness = nil::marshalling::option::big_endian>
+                using ether_type = nil::marshalling::types::integral<
+                    nil::marshalling::field_type<Endianness>, 
+                    std::uint16_t, 
+                    nil::marshalling::option::default_num_value<
+                        std::conditional<std::is_same<Endianness, nil::marshalling::option::big_endian>, 
+                                         0x0800, 
+                                         0x0008
+                                        >
+                    >
+                >;
+            }    // namespace detail
+
+            template<typename TMessage>
+            using ethernet_type2_protocol_stack = nil::marshalling::protocol::checksum_layer<
+                checksum_field_type, nil::marshalling::protocol::checksum::crc_32,
+                nil::marshalling::protocol::transport_value_layer<
+                    typename detail::mac_addresses_marshalling_type, 
+                    ethernet_type2_message_interface<>::TransportFieldIdx_mac_addresses,
+                    nil::marshalling::protocol::msg_id_layer<ether_type, TMessage, all_messages_type<TMessage>,
+                        nil::marshalling::protocol::msg_data_layer<>
+                    >
+                >
+            >;
 
         }    // namespace types
     }        // namespace marshalling

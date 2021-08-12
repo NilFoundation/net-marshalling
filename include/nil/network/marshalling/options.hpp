@@ -142,7 +142,7 @@ namespace nil {
             struct fields_impl<std::tuple<TFields...>> { };
             /// @endcond
 
-            /// @brief Alias to FieldsImpl<std::tuple<> >
+            /// @brief Alias to fields_impl<std::tuple<> >
             /// @headerfile nil/marshalling/options.h
             using zero_fields_impl = fields_impl<std::tuple<>>;
 

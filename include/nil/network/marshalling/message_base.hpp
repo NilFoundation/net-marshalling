@@ -61,18 +61,18 @@ namespace nil {
         ///         default constructed value of nil::marshalling::message::msg_id_type will be returned.
         ///     @li nil::marshalling::option::msg_type - Provide type of actual message that
         ///         inherits from this nil::marshalling::message_base class.
-        ///     @li nil::marshalling::option::FieldsImpl - Usually implementation of read, write,
+        ///     @li nil::marshalling::option::fields_impl - Usually implementation of read, write,
         ///         validity check, and length calculation is pretty straight forward. For
         ///         example the message is considered valid if all the field values
         ///         are considered to be valid, or read operation is to perform read for
-        ///         all the fields in the message. If the nil::marshalling::option::FieldsImpl
+        ///         all the fields in the message. If the nil::marshalling::option::fields_impl
         ///         option with all the message field classes bundled into
         ///         the std::tuple is provided, then @ref message_base class can implement
         ///         read_impl(), write_impl(), valid_impl(), length_impl() virtual functions
         ///         declared as pure in nil::marshalling::message interface. The option also
         ///         provides an accessor functions to the all the field objects: fields().
         ///     @li nil::marshalling::option::ZeroFieldsImpl - This option is an alias to
-        ///         nil::marshalling::option::FieldsImpl<std::tuple<> >, which provides implementation
+        ///         nil::marshalling::option::fields_impl<std::tuple<> >, which provides implementation
         ///         read_impl(), write_impl(), valid_impl(), length_impl() virtual functions
         ///         when message contains no fields, i.e. read_impl() and writeImple() will
         ///         always report success doing nothing, valid_impl() will always return
@@ -839,7 +839,7 @@ namespace nil {
 ///     typedef std::tuple<Field1, Field2, Field3> MyMessageFields
 ///
 ///     class Message1 : public nil::marshalling::message_base<MyInterface,
-///     nil::marshalling::option::FieldsImpl<MyMessageFields> >
+///     nil::marshalling::option::fields_impl<MyMessageFields> >
 ///     {
 ///     public:
 ///         MARSHALLING_MSG_FIELDS_ACCESS(name1, name2, name3);

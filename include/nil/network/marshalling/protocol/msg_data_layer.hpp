@@ -247,7 +247,7 @@ namespace nil {
                 /// @details The way the message contents are written is determined by the
                 ///     type of the message. If TMsg type is recognised to be actual message
                 ///     inheriting from nil::marshalling::message_base with its fields provided using
-                ///     nil::marshalling::option::FieldsImpl option, the function calls @b eval_write
+                ///     nil::marshalling::option::fields_impl option, the function calls @b eval_write
                 ///     non-virtual function defined by nil::marshalling::message_base
                 ///     (see nil::marshalling::message_base::eval_write) or redefined by the actual
                 ///     message itself. Otherwise, TMsg type is expected to be the used
